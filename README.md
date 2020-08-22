@@ -16,7 +16,7 @@ Puede comunicarse con el grupo de soporte en [Megu Support](https://t.me/MeguSup
 ### Lea estas notas detenidamente antes de continuar
  - Edite cualquier mención de @MeguSupport en su propio chat de soporte.
  - No admitimos bifurcaciones, una vez que bifurque el bot y despliegue el dolor de cabeza de los errores y el soporte sea suyo, no venga a nuestro chat de soporte pidiendo ayuda técnica.
- - Su código debe ser de código abierto y debe haber un enlace al repositorio de su bifurcación en la respuesta de inicio del bot. [Ver esto](https://github.com/NachABR/MeguBot-master/MeguBot/__main__.py#L25)
+ - Su código debe ser de código abierto y debe haber un enlace al repositorio de su bifurcación en la respuesta de inicio del bot. [Ver esto](https://github.com/NachABR/MeguBot-master/blob/f3c76b1c84e14b88a93f3f5a57b4ee748a83c551/MeguBot/__main__.py#L24)
  - Si viene a nuestro chat de soporte en Telegram pidiendo ayuda sobre una "bifurcación" o un problema técnico con un módulo, terminará siendo ignorado o prohibido.
  - Por último, si se encuentra que ejecuta este repositorio sin que el código sea de código abierto o el enlace del repositorio no se menciona en el bot, le enviaremos una gban en nuestra red debido a una violación de la licencia, puede hacerlo Sea un idiota y no respete el código fuente abierto (no nos importa), pero no lo tendremos en nuestros chats.
 <details>
