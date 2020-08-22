@@ -11,9 +11,9 @@ Se puede encontrar en un telegram como [MeguBot](https://t.me/MeguABR_Bot).
 
 Puede comunicarse con el grupo de soporte en [Megu Support](https://t.me/MeguSupport), donde puede solicitar ayuda sobre @MeguABR_Bot, descubrir/solicitar nuevas funciones, informar errores y mantenerse informado cuando sea hay una nueva actualización disponible.
 
-## Cómo configurar/implementar.
+##Cómo configurar/implementar.
 
-### Lea estas notas detenidamente antes de continuar
+###Lea estas notas detenidamente antes de continuar
  - Edite cualquier mención de @MeguSupport en su propio chat de soporte.
  - No admitimos bifurcaciones, una vez que bifurque el bot y despliegue el dolor de cabeza de los errores y el soporte sea suyo, no venga a nuestro chat de soporte pidiendo ayuda técnica.
  - Su código debe ser de código abierto y debe haber un enlace al repositorio de su bifurcación en la respuesta de inicio del bot. [Ver esto](https://github.com/NachABR/MeguBot/MeguBot/__main__.py#L25)
@@ -21,9 +21,9 @@ Puede comunicarse con el grupo de soporte en [Megu Support](https://t.me/MeguSup
  - Por último, si se encuentra que ejecuta este repositorio sin que el código sea de código abierto o el enlace del repositorio no se menciona en el bot, le enviaremos una gban en nuestra red debido a una violación de la licencia, puede hacerlo Sea un idiota y no respete el código fuente abierto (no nos importa), pero no lo tendremos en nuestros chats.
 
 
-<detalles>
-  <summary> Pasos para implementar en Heroku!! </summary>
-
+<details>
+<summary>Pasos para implementar en Heroku!!</summary>
+ 
 ''
 Complete todos los detalles, ¡Implemente!
 Ahora vaya a https://dashboard.heroku.com/apps/(app-name)/resources (Reemplace (app-name) con el nombre de su aplicación)
@@ -31,13 +31,13 @@ Encienda el dinamómetro del trabajador (no se preocupe, es gratis :D) y Webhook
 Ahora envíe el bot / start. Si no responde, vaya a https://dashboard.heroku.com/apps/(app-name)/settings y elimine el webhook y el puerto.
 ''
 
-  [! [Implementar](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Nach/MeguBot.git)
+  [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Nach/MeguBot.git)
 
-</detalles>
-<detalles>
-  <summary> Pasos para ser anfitrión personal !! </summary>
+</details>
+<details>
+ <summary>Pasos para ser anfitrión personal !!</summary>
 
-Nota: Este conjunto de instrucciones es solo una copia y pegado de Marie, tenga en cuenta que [Megu Support] (https://t.me/MeguSupport) tiene como objetivo manejar el soporte para @MeguABR_Bot y no cómo configurar su propia bifurcación. Si encuentra esto un poco confuso/difícil de entender, le recomendamos que pregunte a un desarrollador, por favor evite preguntar cómo configurar la instancia del bot en el chat de soporte, tiene como objetivo ayudar a nuestra propia instancia del bot y no a las bifurcaciones.
+Nota: Este conjunto de instrucciones es solo una copia y pegado de Marie, tenga en cuenta que [Megu Support](https://t.me/MeguSupport) tiene como objetivo manejar el soporte para @MeguABR_Bot y no cómo configurar su propia bifurcación. Si encuentra esto un poco confuso/difícil de entender, le recomendamos que pregunte a un desarrollador, por favor evite preguntar cómo configurar la instancia del bot en el chat de soporte, tiene como objetivo ayudar a nuestra propia instancia del bot y no a las bifurcaciones.
 
   ## Configuración del bot (¡lea esto antes de intentar usarlo!):
 ¡Asegúrese de usar python3.6, ya que no puedo garantizar que todo funcione como se esperaba en versiones anteriores de Python!
