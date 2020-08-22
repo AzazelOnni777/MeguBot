@@ -34,6 +34,7 @@ Ahora envíe el bot /start. Si no responde, vaya a https://dashboard.heroku.com/
 <details>
  <summary>Pasos para hostearlo!!</summary>
 
+
 Nota: Este conjunto de instrucciones es solo una copia y pegado de Marie, tenga en cuenta que [Megu Support](https://t.me/MeguSupport) tiene como objetivo manejar el soporte para @MeguABR_Bot y no cómo configurar su propia bifurcación. Si encuentra esto un poco confuso/difícil de entender, le recomendamos que pregunte a un desarrollador, por favor evite preguntar cómo configurar la instancia del bot en el chat de soporte, tiene como objetivo ayudar a nuestra propia instancia del bot y no a las bifurcaciones.
 
   ## Configuración del bot (¡lea esto antes de intentar usarlo!):
