@@ -11,9 +11,9 @@ Se puede encontrar en telegram como [MeguBot](https://t.me/MeguABR_Bot).
 
 Puede comunicarse con el grupo de soporte en [Megu Support](https://t.me/MeguSupport), donde puede solicitar ayuda sobre @MeguABR_Bot, descubrir/solicitar nuevas funciones, informar errores y mantenerse informado cuando sea hay una nueva actualización disponible.
 
-##Cómo configurar/implementar.
+## Cómo configurar/implementar.
 
-###Lea estas notas detenidamente antes de continuar
+### Lea estas notas detenidamente antes de continuar
  - Edite cualquier mención de @MeguSupport en su propio chat de soporte.
  - No admitimos bifurcaciones, una vez que bifurque el bot y despliegue el dolor de cabeza de los errores y el soporte sea suyo, no venga a nuestro chat de soporte pidiendo ayuda técnica.
  - Su código debe ser de código abierto y debe haber un enlace al repositorio de su bifurcación en la respuesta de inicio del bot. [Ver esto](https://github.com/NachABR/MeguBot/MeguBot/__main__.py#L25)
