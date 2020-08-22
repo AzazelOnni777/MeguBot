@@ -199,14 +199,14 @@ el mensaje se eliminará inmediatamente. A veces, una buena combinación es comb
 
 * NOTA:* las listas negras no afectan a los administradores de grupo.
 
- • `/blacklist` *:* Ver las palabras actuales de la lista negra.
+ • `/blacklist`*:* Ver las palabras actuales de la lista negra.
 
 *Solo administradores:*
- • `/addblacklist <triggers>` *:* Agrega un trigger a la lista negra. Cada línea se considera un trigger, por lo que el uso de \
+ • `/addblacklist <triggers>`*:* Agrega un trigger a la lista negra. Cada línea se considera un trigger, por lo que el uso de \
 las líneas le permitirán agregar múltiples activadores.
- • `/unblacklist <triggers>` *:* Elimina los triggers de la lista negra. Aquí se aplica la misma lógica de nueva línea, por lo que puede eliminar \
+ • `/unblacklist <triggers>`*:* Elimina los triggers de la lista negra. Aquí se aplica la misma lógica de nueva línea, por lo que puede eliminar \
 múltiples disparadores a la vez.
- • `/rmblacklist <triggers>` *:* Igual que arriba.
+ • `/rmblacklist <triggers>`*:* Igual que arriba.
 """
 
 BLACKLIST_HANDLER = DisableAbleCommandHandler("blacklist", blacklist)

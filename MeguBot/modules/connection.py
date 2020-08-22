@@ -294,7 +294,7 @@ Las acciones están disponibles con grupos conectados:
  • Establecer bloqueos y desbloqueos en el chat.
  • Habilitar y deshabilitar comandos en el chat.
  • Exportación e importación de respaldo de chat.
- • ¡Más en un futuro!"""
+ • Más en un futuro!"""
 
 @run_async
 def help_connect_chat(update, context):
@@ -371,7 +371,7 @@ __mod_name__ = "Conexiones"
 
 __help__ = """
 A veces, solo desea agregar algunas notas y filtros a un chat grupal, pero no desea que todos lo vean; Aquí es donde entran las conexiones...
-¡Esto le permite conectarse a la base de datos de un chat y agregar cosas sin que los comandos aparezcan en el chat! Por razones obvias, debe ser administrador para agregar cosas; pero cualquier miembro del grupo puede ver sus datos.
+Esto le permite conectarse a la base de datos de un chat y agregar cosas sin que los comandos aparezcan en el chat! Por razones obvias, debe ser administrador para agregar cosas; pero cualquier miembro del grupo puede ver sus datos.
 
  × /connect: Se conecta al chat (se puede hacer en un grupo mediante / connect o / connect <chat id> en PM)
  × /connection: Lista de chats conectados

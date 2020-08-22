@@ -188,7 +188,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         if excp.message == "Mensaje de respuesta no encontrado":
             # Do not reply
             message.reply_text(
-                f"¡Baneado! El usuario será baneado por {time_val}.", quote=False)
+                f"Baneado! El usuario será baneado por {time_val}.", quote=False)
             return log
         else:
             LOGGER.warning(update)
@@ -372,13 +372,13 @@ def selfunban(context: CallbackContext, update: Update) -> str:
 
 
 __help__ = """
-• `/exploitme` *:* Explota al usuario que emitió el comando
+• `/exploitme`*:* Explota al usuario que emitió el comando
 
 *Solo administradores:*
- • `/ban <userhandle>` *: * Prohíbe a un usuario. (a través de manejar o responder)
- • `/tban <userhandle> x (m / h / d)` *: * Prohíbe a un usuario durante el tiempo `x`. (a través del identificador o respuesta). `m` =` minutos`, `h` =` horas`, `d` =` días`.
- • `/unban <userhandle>` *: * Desbloquea a un usuario. (a través de manejar o responder)
- • `/exploit <userhandle>` *: * Saca a un usuario del grupo, (a través del identificador o respuesta)
+ • `/ban <userhandle>`*: * Prohíbe a un usuario. (a través de manejar o responder)
+ • `/tban <userhandle> x (m / h / d)`*: * Prohíbe a un usuario durante el tiempo `x`. (a través del identificador o respuesta). `m` =` minutos`, `h` =` horas`, `d` =` días`.
+ • `/unban <userhandle>`*: * Desbloquea a un usuario. (a través de manejar o responder)
+ • `/exploit <userhandle>`*: * Saca a un usuario del grupo, (a través del identificador o respuesta)
 """
 
 BAN_HANDLER = CommandHandler("ban", ban)

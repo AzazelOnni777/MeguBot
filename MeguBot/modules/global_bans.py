@@ -24,26 +24,26 @@ from telegram.utils.helpers import mention_html
 GBAN_ENFORCE_GROUP = 6
 
 GBAN_ERRORS = {
-    "User is an administrator of the chat",
+    "El usuario es administrador del grupo",
     "Chat not found",
-    "Not enough rights to restrict/unrestrict chat member",
+    "No hay suficientes derechos para restringir/no restringir al miembro del chat",
     "User_not_participant",
     "Peer_id_invalid",
-    "Group chat was deactivated",
-    "Need to be inviter of a user to kick it from a basic group",
+    "Se desactivó el chat grupal",
+    "Necesita invitar a un usuario para sacarlo de un grupo básico",
     "Chat_admin_required",
-    "Only the creator of a basic group can kick group administrators",
+    "Solo el creador de un grupo básico puede expulsar a los administradores del grupo",
     "Channel_private",
     "Not in the chat",
     "Can't remove chat owner",
 }
 
 UNGBAN_ERRORS = {
-    "User is an administrator of the chat",
+    "El usuario es administrador del grupo",
     "Chat not found",
-    "Not enough rights to restrict/unrestrict chat member",
+    "No hay suficientes derechos para restringir/no restringir al miembro del chat",
     "User_not_participant",
-    "Method is available for supergroup and channel chats only",
+    "El método está disponible solo para supergrupos y chats de canal",
     "Not in the chat",
     "Channel_private",
     "Chat_admin_required",

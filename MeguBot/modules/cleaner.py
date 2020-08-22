@@ -209,7 +209,7 @@ El limpiador de bluetext elimina los comandos inventados que las personas envía
  • `/cleanblue <on/off/yes/no>`*:* Limpiar comandos después de enviar
  • `/ignoreblue <palabra>`*:* Evita la limpieza automática del comando
  • `/unignoreblue <palabra>`*:* Eliminar evita la limpieza automática del comando
- • `/listblue` *:* Lista los comandos actualmente incluidos en la lista blanca
+ • `/listblue`*:* Lista los comandos actualmente incluidos en la lista blanca
  
  * Los siguientes son comandos solo para desastres, los administradores no pueden usarlos: *
  • `/gignoreblue <palabra>`*:* Ignora globalmente una limpieza de texto azul de la palabra guardada en Megu.

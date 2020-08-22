@@ -558,14 +558,14 @@ Obtén información sobre anime, manga o personajes de [AniList](anilist.co).
 
 * Comandos disponibles: *
 
- • `/anime <anime>` *:* Devuelve información sobre el anime.
- • `/character <carácter>` *:* Devuelve información sobre el carácter.
- • `/manga <manga>` *:* Devuelve información sobre el manga.
- • `/user <user>` *:* Devuelve información sobre un usuario de MyAnimeList.
- • `/next` *: * Devuelve una lista de nuevos animes en las próximas temporadas.
- • `/kaizoku <anime>` *:* Busca un anime en animekaizoku.com
- • `/kayo <anime>` *:* Busca un anime en animekayo.com
- • `/airing <anime>` *:* Devuelve información de emisión de anime.
+ • `/anime <anime>`*:* Devuelve información sobre el anime.
+ • `/character <carácter>`*:* Devuelve información sobre el carácter.
+ • `/manga <manga>`*:* Devuelve información sobre el manga.
+ • `/user <user>`*:* Devuelve información sobre un usuario de MyAnimeList.
+ • `/next`*: * Devuelve una lista de nuevos animes en las próximas temporadas.
+ • `/kaizoku <anime>`*:* Busca un anime en animekaizoku.com
+ • `/kayo <anime>`*:* Busca un anime en animekayo.com
+ • `/airing <anime>`*:* Devuelve información de emisión de anime.
 
  """
 

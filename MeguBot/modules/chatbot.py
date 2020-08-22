@@ -134,11 +134,11 @@ Chatbot utiliza la API CoffeeHouse y permite que Megu hable y proporciona una ex
 
 *Comandos:*
 *Solo administradores:*
- • `/addchat` *:* Habilita el modo Chatbot en el chat.
- • `/rmchat` *:* Desactiva el modo Chatbot en el chat.
+ • `/addchat`*:* Habilita el modo Chatbot en el chat.
+ • `/rmchat`*:* Desactiva el modo Chatbot en el chat.
  
-* Dragones o superior únicamente: *
- • `/listaichats` *:* Lista los chats en los que está habilitado el modo chat.
+* Demonios Carmesí o superior únicamente: *
+ • `/listaichats`*:* Lista los chats en los que está habilitado el modo chat.
 
 Informa errores en {SUPPORT_CHAT}
 *Desarrollado por CoffeeHouse*(https://coffeehouse.intellivoid.net/) de @Intellivoid

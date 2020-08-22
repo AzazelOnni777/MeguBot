@@ -256,14 +256,14 @@ def __chat_settings__(chat_id, user_id):
 
 
 __help__ = """
-•`/filters` *:* Lista todos los triggers activos en este chat.
+•`/filters`*:* Lista todos los triggers activos en este chat.
 
 *Solo administradores:*
 •`/filter <palabra clave> <mensaje de respuesta>`*:* Agrega un trigger a este chat. El bot ahora responderá ese mensaje siempre que una 'palabra clave' \
 sea mencionada. Si responde a una pegatina con una palabra clave, el bot responderá con esa pegatina. \
 Si desea que su palabra clave sea una oración, use comillas.
 *Ejemplo:*`/filter" Hola allí "¿Cómo estás?`
-•`/stop <palabra clave de trigger>` *: * Detiene ese trigger.
+•`/stop <palabra clave de trigger>`*: * Detiene ese trigger.
 Nota: Los triggers ahora tienen expresiones regulares, por lo que cualquier trigger existente que tenga no distingue entre mayúsculas y minúsculas de forma predeterminada. \
 Para guardar expresiones regulares que no distinguen entre mayúsculas y minúsculas, utilice \
 `/filter" (?i) mi oracion de respuesta" mi respuesta que ignora el caso` \

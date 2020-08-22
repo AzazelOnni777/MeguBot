@@ -149,7 +149,7 @@ def export_data(update, context):
             timeformatt = time.strftime("%H:%M:%S %d/%m/%Y",
                                         time.localtime(checkchat.get("value")))
             update.effective_message.reply_text(
-                "¡Solo puedes hacer una copia de seguridad una vez al día!\nPuedes hacer una copia de seguridad de nuevo en aproximadamente `{}`"
+                "Solo puedes hacer una copia de seguridad una vez al día!\nPuedes hacer una copia de seguridad de nuevo en aproximadamente `{}`"
                 .format(timeformatt),
                 parse_mode=ParseMode.MARKDOWN,
             )
@@ -368,7 +368,7 @@ __mod_name__ = "Backups"
 __help__ = """
 *Solo para propietario de grupo:*
 
- × /import: Responde al archivo de respaldo para que el grupo mayordomo importe tanto como sea posible, ¡haciendo que las transferencias sean muy fáciles! \
+ × /import: Responde al archivo de respaldo para que el grupo mayordomo importe tanto como sea posible, haciendo que las transferencias sean muy fáciles! \
  Tenga en cuenta que los archivos/fotos no se pueden importar debido a restricciones de telegram.
 
  × /export: Los datos del grupo de exportación, que se exportarán son: reglas, mensajes (documentos, imágenes, música, video, audio, voz, texto, botones de texto) \

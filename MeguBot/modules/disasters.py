@@ -21,10 +21,10 @@ ELEVATED_USERS_FILE = os.path.join(os.getcwd(),
 def check_user_id(user_id: int, context: CallbackContext) -> Optional[str]:
     bot = context.bot
     if not user_id:
-        reply = "That...is a chat! baka ka omae?"
+        reply = "Esto...es un chat! baka ka omae?"
 
     elif user_id == bot.id:
-        reply = "This does not work that way."
+        reply = "Esto no funciona de esa manera."
 
     else:
         reply = None
@@ -32,16 +32,16 @@ def check_user_id(user_id: int, context: CallbackContext) -> Optional[str]:
 
 
 #I added extra new lines
-disasters = """ Megu has bot access levels we call as *"Disaster Levels"*
-\n*Heroes Association* - Devs who can access the bots server and can execute, edit, modify bot code. Can also manage other Disasters
-\n*God* - Only one exists, bot owner. 
-Owner has complete bot access, including bot adminship in chats megu is at.
-\n*Dragons* - Have super user access, can gban, manage disasters lower than them and are admins in megu.
-\n*Demons* - Have access go globally ban users across megu.
-\n*Tigers* - Same as wolves but can unban themselves if banned.
-\n*Wolves* - Cannot be banned, muted flood kicked but can be manually banned by admins.
-\n*Disclaimer*: The disaster levels in megu are there for troubleshooting, support, banning potential scammers.
-Report abuse or ask us more on these at [Heroes Association](https://t.me/OnePunchSupport).
+disasters = """Megu tiene niveles de acceso de bot: " *
+\n *Asociación de Aventureros*: Desarrolladores que pueden acceder al servidor del bot y pueden ejecutar, editar y modificar el código del bot. También puede gestionar otros problemas.
+\n *Rey Demonio*: Solo existe uno, el propietario del bot.
+El propietario Tiene acceso completo al bot, incluida la administración del bot en los chats en los que Megu está.
+\n *Demonios Carmesí*: Tienen acceso de superusuario, pueden banear globalmente, administrar desastres menores que ellos y son administradores en Megu.
+\n *Demonios*: Tienen acceso al baneo global de usuarios en Megu.
+\n *Tigres*: Igual que los lobos, pero pueden deshacerse si están prohibidos.
+\n *Lobos*: No se puede prohibir, si hace flood se silencia o kickea, pero los administradores pueden banearlo manualmente.
+\n *Descargo de responsabilidad*: Los niveles de desastre en Megu sirven para solucionar problemas, brindar asistencia y prohibir a los posibles estafadores.
+Informar sobre abusos o preguntarnos más sobre estos en [Megu Support] (https://t.me/MeguSupport).
 """
 
 
@@ -72,16 +72,16 @@ def addsudo(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in SUDO_USERS:
-        message.reply_text("This member is already a Dragon Disaster")
+        message.reply_text("Este miembro ya es un Demonio Carmesí")
         return ""
 
     if user_id in SUPPORT_USERS:
-        rt += "Requested HA to promote a Demon Disaster to Dragon."
+        rt += "Solicitó a la AA para promover un Demonio a Demonio Carmesí."
         data['supports'].remove(user_id)
         SUPPORT_USERS.remove(user_id)
 
     if user_id in WHITELIST_USERS:
-        rt += "Requested HA to promote a Wolf Disaster to Dragon."
+        rt += "Solicitó a la AA para promover un Lobo a Demonio Carmesí."
         data['whitelists'].remove(user_id)
         WHITELIST_USERS.remove(user_id)
 
@@ -92,11 +92,11 @@ def addsudo(update: Update, context: CallbackContext) -> str:
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + "\nSuccessfully set Disaster level of {} to Dragon!".format(
+        rt + "\nSe estableció correctamente el nivel de explosion de {} en Dragón!".format(
             user_member.first_name))
 
     log_message = (
-        f"#SUDO\n"
+        f"#Superusuario\n"
         f"<b>Administrador:</b> {mention_html(user.id, user.first_name)}\n"
         f"<b>Usuario:</b> {mention_html(user_member.id, user_member.first_name)}")
 
@@ -130,16 +130,16 @@ def addsupport(
         data = json.load(infile)
 
     if user_id in SUDO_USERS:
-        rt += "Requested HA to deomote this Dragon to Demon"
+        rt += "Solicitó a la AA que degradara al Dragón a Demonio"
         data['sudos'].remove(user_id)
         SUDO_USERS.remove(user_id)
 
     if user_id in SUPPORT_USERS:
-        message.reply_text("This user is already a Demon Disaster.")
+        message.reply_text("Este usuario ya es un Demonio.")
         return ""
 
     if user_id in WHITELIST_USERS:
-        rt += "Requested HA to promote this Wolf Disaster to Demon"
+        rt += "Solicitó a la AA para promover un lobo a demonio"
         data['whitelists'].remove(user_id)
         WHITELIST_USERS.remove(user_id)
 
@@ -150,10 +150,10 @@ def addsupport(
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + f"\n{user_member.first_name} was added as a Demon Disaster!")
+        rt + f"\n{user_member.first_name} fue agregado como un demonio!")
 
     log_message = (
-        f"#SUPPORT\n"
+        f"#Soporte\n"
         f"<b>Administrador:</b> {mention_html(user.id, user.first_name)}\n"
         f"<b>Usuario:</b> {mention_html(user_member.id, user_member.first_name)}")
 
@@ -184,17 +184,17 @@ def addwhitelist(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in SUDO_USERS:
-        rt += "This member is a Dragon Disaster, Demoting to Wolf."
+        rt += "Este miembro ya no es un dragón, degradado a lobo."
         data['sudos'].remove(user_id)
         SUDO_USERS.remove(user_id)
 
     if user_id in SUPPORT_USERS:
-        rt += "This user is already a Demon Disaster, Demoting to Wolf."
+        rt += "Este usuario ya no es un demonío, degradado a lobo."
         data['supports'].remove(user_id)
         SUPPORT_USERS.remove(user_id)
 
     if user_id in WHITELIST_USERS:
-        message.reply_text("This user is already a Wolf Disaster.")
+        message.reply_text("Este usuario ya es un lobo.")
         return ""
 
     data['whitelists'].append(user_id)
@@ -205,10 +205,10 @@ def addwhitelist(update: Update, context: CallbackContext) -> str:
 
     update.effective_message.reply_text(
         rt +
-        f"\nSuccessfully promoted {user_member.first_name} to a Wolf Disaster!")
+        f"\nAscendió con éxito a {user_member.first_name} a Lobo!")
 
     log_message = (
-        f"#WHITELIST\n"
+        f"#ListaBlanca\n"
         f"<b>Administrador:</b> {mention_html(user.id, user.first_name)} \n"
         f"<b>Usuario:</b> {mention_html(user_member.id, user_member.first_name)}")
 
@@ -239,22 +239,22 @@ def addtiger(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in SUDO_USERS:
-        rt += "This member is a Dragon Disaster, Demoting to Tiger."
+        rt += "Este miembro ya no es un Demonio Carmesí, degradado a Tigre."
         data['sudos'].remove(user_id)
         SUDO_USERS.remove(user_id)
 
     if user_id in SUPPORT_USERS:
-        rt += "This user is already a Demon Disaster, Demoting to Tiger."
+        rt += "Este usuario ya no es un demonio, degradado a tigre."
         data['supports'].remove(user_id)
         SUPPORT_USERS.remove(user_id)
 
     if user_id in WHITELIST_USERS:
-        rt += "This user is already a Wolf Disaster, Demoting to Tiger."
+        rt += "Este usuario ya no es un lobo, degradado a Tiger."
         data['whitelists'].remove(user_id)
         WHITELIST_USERS.remove(user_id)
 
     if user_id in TIGER_USERS:
-        message.reply_text("This user is already a Tiger.")
+        message.reply_text("Este usuario ya es un tigre.")
         return ""
 
     data['tigers'].append(user_id)
@@ -265,11 +265,11 @@ def addtiger(update: Update, context: CallbackContext) -> str:
 
     update.effective_message.reply_text(
         rt +
-        f"\nSuccessfully promoted {user_member.first_name} to a Tiger Disaster!"
+        f"\nAscendió con éxito a {user_member.first_name} a Tigre!"
     )
 
     log_message = (
-        f"#TIGER\n"
+        f"#Tigre\n"
         f"<b>Administrador:</b> {mention_html(user.id, user.first_name)} \n"
         f"<b>Usuario:</b> {mention_html(user_member.id, user_member.first_name)}")
 
@@ -299,7 +299,7 @@ def removesudo(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in SUDO_USERS:
-        message.reply_text("Requested HA to demote this user to Civilian")
+        message.reply_text("Solicitó a la AA para degradar a este usuario a Humano")
         SUDO_USERS.remove(user_id)
         data['sudos'].remove(user_id)
 
@@ -319,7 +319,7 @@ def removesudo(update: Update, context: CallbackContext) -> str:
         return log_message
 
     else:
-        message.reply_text("This user is not a Dragon Disaster!")
+        message.reply_text("Este usuario no es un Demonio Carmesí!")
         return ""
 
 
@@ -343,7 +343,7 @@ def removesupport(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in SUPPORT_USERS:
-        message.reply_text("Requested HA to demote this user to Civilian")
+        message.reply_text("Solicitó a la AA para degradar a este usuario a Humano")
         SUPPORT_USERS.remove(user_id)
         data['supports'].remove(user_id)
 
@@ -351,7 +351,7 @@ def removesupport(update: Update, context: CallbackContext) -> str:
             json.dump(data, outfile, indent=4)
 
         log_message = (
-            f"#UNSUPPORT\n"
+            f"#Despojo\n"
             f"<b>Administrador:</b> {mention_html(user.id, user.first_name)}\n"
             f"<b>Usuario:</b> {mention_html(user_member.id, user_member.first_name)}"
         )
@@ -362,7 +362,7 @@ def removesupport(update: Update, context: CallbackContext) -> str:
         return log_message
 
     else:
-        message.reply_text("This user is not a Demon level Disaster!")
+        message.reply_text("Este usuario no es un demonio!")
         return ""
 
 
@@ -386,7 +386,7 @@ def removewhitelist(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in WHITELIST_USERS:
-        message.reply_text("Demoting to normal user")
+        message.reply_text("Degradado a usuario normal")
         WHITELIST_USERS.remove(user_id)
         data['whitelists'].remove(user_id)
 
@@ -394,7 +394,7 @@ def removewhitelist(update: Update, context: CallbackContext) -> str:
             json.dump(data, outfile, indent=4)
 
         log_message = (
-            f"#UNWHITELIST\n"
+            f"#UnWhiteList\n"
             f"<b>Administrador:</b> {mention_html(user.id, user.first_name)}\n"
             f"<b>Usuario:</b> {mention_html(user_member.id, user_member.first_name)}"
         )
@@ -404,7 +404,7 @@ def removewhitelist(update: Update, context: CallbackContext) -> str:
 
         return log_message
     else:
-        message.reply_text("This user is not a Wolf Disaster!")
+        message.reply_text("Este usuario no es un lobo!")
         return ""
 
 
@@ -428,7 +428,7 @@ def removetiger(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in TIGER_USERS:
-        message.reply_text("Demoting to normal user")
+        message.reply_text("Degradado a usuario normal")
         TIGER_USERS.remove(user_id)
         data['tigers'].remove(user_id)
 
@@ -436,7 +436,7 @@ def removetiger(update: Update, context: CallbackContext) -> str:
             json.dump(data, outfile, indent=4)
 
         log_message = (
-            f"#UNTIGER\n"
+            f"#UnTigre\n"
             f"<b>Administrador:</b> {mention_html(user.id, user.first_name)}\n"
             f"<b>Usuario:</b> {mention_html(user_member.id, user_member.first_name)}"
         )
@@ -446,14 +446,14 @@ def removetiger(update: Update, context: CallbackContext) -> str:
 
         return log_message
     else:
-        message.reply_text("This user is not a Tiger Disaster!")
+        message.reply_text("Este usuario no es un Tigre!")
         return ""
 
 
 @run_async
 @whitelist_plus
 def whitelistlist(update: Update, context: CallbackContext):
-    reply = "<b>Known Wolf Disasters 🐺:</b>\n"
+    reply = "<b>Lobos 🐺:</b>\n"
     bot = context.bot
     for each_user in WHITELIST_USERS:
         user_id = int(each_user)
@@ -469,7 +469,7 @@ def whitelistlist(update: Update, context: CallbackContext):
 @run_async
 @whitelist_plus
 def tigerlist(update: Update, context: CallbackContext):
-    reply = "<b>Known Tiger Disasters 🐯:</b>\n"
+    reply = "<b>Tigres 🐯:</b>\n"
     bot = context.bot
     for each_user in TIGER_USERS:
         user_id = int(each_user)
@@ -485,7 +485,7 @@ def tigerlist(update: Update, context: CallbackContext):
 @whitelist_plus
 def supportlist(update: Update, context: CallbackContext):
     bot = context.bot
-    reply = "<b>Known Demon Disasters 👹:</b>\n"
+    reply = "<b>Destroyers 🕷:</b>\n"
     for each_user in SUPPORT_USERS:
         user_id = int(each_user)
         try:
@@ -501,7 +501,7 @@ def supportlist(update: Update, context: CallbackContext):
 def sudolist(update: Update, context: CallbackContext):
     bot = context.bot
     true_sudo = list(set(SUDO_USERS) - set(DEV_USERS))
-    reply = "<b>Known Dragon Disasters 🐉:</b>\n"
+    reply = "<b>Demonios Carmesí 💥:</b>\n"
     for each_user in true_sudo:
         user_id = int(each_user)
         try:
@@ -517,7 +517,7 @@ def sudolist(update: Update, context: CallbackContext):
 def devlist(update: Update, context: CallbackContext):
     bot = context.bot
     true_dev = list(set(DEV_USERS) - {OWNER_ID})
-    reply = "<b>Hero Association Members ⚡️:</b>\n"
+    reply = "<b>Aventureros ⚜:</b>\n"
     for each_user in true_dev:
         user_id = int(each_user)
         try:
@@ -529,21 +529,21 @@ def devlist(update: Update, context: CallbackContext):
 
 
 __help__ = f"""
- • `/heroes`*:* Lists all Hero Association members.
- • `/dragons`*:* Lists all Dragon disasters.
- • `/demons`*:* Lists all Demon disasters.
- • `/tigers`*:* Lists all Tigers disasters.
- • `/wolves`*:* Lists all Wolf disasters.
- *Note:* These commands list users with special bot priveleges and can only be used by them.
- You can visit {SUPPORT_CHAT} to query more about these.
+• `/aventurers`*: * Lista de todos los miembros de la Asociación de Aventureros.
+• `/cardemons`*: * Lista de todos los de Demonios Carmesí.
+• `/destroyers`*:* Lista de todos los demonios.
+• `/tigers`*:* Lista de todos los Tigres.
+• `/wolves`*:* Lista de todos los Lobos.
+*Nota:* Estos comandos enumeran a los usuarios con privilegios especiales de bot y solo pueden ser utilizados por ellos.
+  Puede visitar {SUPPORT_CHAT} para consultar más sobre estos.
 """
 
-SUDO_HANDLER = CommandHandler(("addsudo", "adddragon"), addsudo)
-SUPPORT_HANDLER = CommandHandler(("addsupport", "adddemon"), addsupport)
+SUDO_HANDLER = CommandHandler(("addsudo", "addcardemon"), addsudo)
+SUPPORT_HANDLER = CommandHandler(("addsupport", "adddestroyer"), addsupport)
 TIGER_HANDLER = CommandHandler(("addtiger"), addtiger)
 WHITELIST_HANDLER = CommandHandler(("addwhitelist", "addwolf"), addwhitelist)
-UNSUDO_HANDLER = CommandHandler(("removesudo", "removedragon"), removesudo)
-UNSUPPORT_HANDLER = CommandHandler(("removesupport", "removedemon"),
+UNSUDO_HANDLER = CommandHandler(("removesudo", "removecardemon"), removesudo)
+UNSUPPORT_HANDLER = CommandHandler(("removesupport", "removedestroyer"),
                                    removesupport)
 UNTIGER_HANDLER = CommandHandler(("removetiger"), removetiger)
 UNWHITELIST_HANDLER = CommandHandler(("removewhitelist", "removewolf"),
@@ -553,8 +553,8 @@ WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist", "wolves"],
                                        whitelistlist)
 TIGERLIST_HANDLER = CommandHandler(["tigers"], tigerlist)
 SUPPORTLIST_HANDLER = CommandHandler(["supportlist", "demons"], supportlist)
-SUDOLIST_HANDLER = CommandHandler(["sudolist", "dragons"], sudolist)
-DEVLIST_HANDLER = CommandHandler(["devlist", "heroes"], devlist)
+SUDOLIST_HANDLER = CommandHandler(["sudolist", "cardemons"], sudolist)
+DEVLIST_HANDLER = CommandHandler(["devlist", "adventurers"], devlist)
 
 dispatcher.add_handler(SUDO_HANDLER)
 dispatcher.add_handler(SUPPORT_HANDLER)
@@ -571,7 +571,7 @@ dispatcher.add_handler(SUPPORTLIST_HANDLER)
 dispatcher.add_handler(SUDOLIST_HANDLER)
 dispatcher.add_handler(DEVLIST_HANDLER)
 
-__mod_name__ = "Disasters"
+__mod_name__ = "Bot Admins"
 __handlers__ = [
     SUDO_HANDLER, SUPPORT_HANDLER, TIGER_HANDLER, WHITELIST_HANDLER,
     UNSUDO_HANDLER, UNSUPPORT_HANDLER, UNTIGER_HANDLER, UNWHITELIST_HANDLER,

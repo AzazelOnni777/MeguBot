@@ -34,22 +34,22 @@ from telegram.utils.helpers import (mention_html, mention_markdown)
 # LOGGER.info("Original federation module by MrYacha, reworked by Mizukito Akito (@peaktogoo) on Telegram.")
 
 FBAN_ERRORS = {
-    "User is an administrator of the chat", "Chat not found",
-    "Not enough rights to restrict/unrestrict chat member",
-    "User_not_participant", "Peer_id_invalid", "Group chat was deactivated",
-    "Need to be inviter of a user to kick it from a basic group",
+    "El usuario es administrador del grupo", "Chat not found",
+    "No hay suficientes derechos para restringir/no restringir al miembro del chat",
+    "User_not_participant", "Peer_id_invalid", "Se desactivó el chat grupal",
+    "Necesita invitar a un usuario para sacarlo de un grupo básico",
     "Chat_admin_required",
-    "Only the creator of a basic group can kick group administrators",
-    "Channel_private", "Not in the chat", "Have no rights to send a message"
+    "Solo el creador de un grupo básico puede expulsar a los administradores del grupo",
+    "Channel_private", "Not in the chat", "No tiene derecho a enviar un mensaje"
 }
 
 UNFBAN_ERRORS = {
-    "User is an administrator of the chat", "Chat not found",
-    "Not enough rights to restrict/unrestrict chat member",
+    "El usuario es administrador del grupo", "Chat not found",
+    "No hay suficientes derechos para restringir/no restringir al miembro del chat",
     "User_not_participant",
-    "Method is available for supergroup and channel chats only",
+    "El método está disponible solo para supergrupos y chats de canal",
     "Not in the chat", "Channel_private", "Chat_admin_required",
-    "Have no rights to send a message"
+    "No tiene derecho a enviar un mensaje"
 }
 
 
@@ -2079,26 +2079,25 @@ def fed_admin_help(update: Update, context: CallbackContext):
 @run_async
 def fed_user_help(update: Update, context: CallbackContext):
     update.effective_message.reply_text(
-        """*🎩 Any user:*
-• `/fbanstat`*:* Shows if you/or the user you are replying to or their username is fbanned somewhere or not.
-• `/chatfed `*:* See the Federation in the current chat.\n""",
+        """*🎩Cualquier usuario:*
+• `/fbanstat`*:* Muestra si usted o el usuario al que está respondiendo o su nombre de usuario está prohibido en algún lugar o no.
+• `/chatfed`*:* Ver la Federación en el chat actual.\n""",
         parse_mode=ParseMode.MARKDOWN)
 
 
 __mod_name__ = "Federations"
 
 __help__ = """
-Everything is fun, until a spammer starts entering your group, and you have to block it. Then you need to start banning more, and more, and it hurts.
-But then you have many groups, and you don't want this spammer to be in one of your groups - how can you deal? Do you have to manually block it, in all your groups?\n
-*No longer!* With Federation, you can make a ban in one chat overlap with all other chats.\n
-You can even designate federation admins, so your trusted admin can ban all the spammers from chats you want to protect.\n
+Todo es divertido, hasta que un spammer empieza a entrar en tu grupo y tienes que bloquearlo. Entonces necesitas empezar a prohibir más y más, y duele.
+Pero entonces tienes muchos grupos y no quieres que este spammer esté en uno de tus grupos, ¿cómo puedes lidiar? ¿Tienes que bloquearlo manualmente en todos tus grupos? \ N
+* ¡Ya no! * Con Federación, puede hacer que una prohibición en un chat se superponga con todos los demás chats. \ N
+Incluso puede designar administradores de la federación, para que su administrador de confianza pueda prohibir a todos los spammers de los chats que desea proteger. \ N
 
-*Commands:*\n
-Feds are now divided into 3 sections for your ease. 
-• `/fedownerhelp`*:* Provides help for fed creation and owner only commands.
-• `/fedadminhelp`*:* Provides help for fed administration commands.
-• `/feduserhelp`*:* Provides help for commands anyone can use.
-
+*Comandos:*\n
+Los federales ahora están divididos en 3 secciones para su comodidad.
+• `/fedownerhelp`*:* Proporciona ayuda para la creación y los comandos solo para el propietario.
+• `/fedadminhelp`*:* Proporciona ayuda para los comandos de administración de la federación.
+• `/feduserhelp`*:* Proporciona ayuda para los comandos que cualquiera puede usar.
 """
 
 NEW_FED_HANDLER = CommandHandler("newfed", new_fed)

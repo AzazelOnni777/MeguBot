@@ -86,7 +86,7 @@ def check_flood(update, context) -> str:
 
     except BadRequest:
         msg.reply_text(
-            "No puedo restringir a las personas aquí, ¡dame permisos primero! Hasta entonces, desactivaré el anti-flood.."
+            "No puedo restringir a las personas aquí, dame permisos primero! Hasta entonces, desactivaré el anti-flood.."
         )
         sql.set_flood(chat.id, 0)
         return "<b>{}:</b>" \
@@ -344,15 +344,15 @@ El antiflood le permite tomar medidas sobre los usuarios que envían más de x m
 resultará en la restricción de ese usuario.
 
  Esto silenciará a los usuarios si envían más de 10 mensajes seguidos, los bots se ignoran.
- • `/flood` *:* Obtiene la configuración actual de control deflood
+ • `/flood`*:* Obtiene la configuración actual de control deflood
 
 • *Solo administradores:*
- • `/setflood <int / 'no' / 'off'>` *: * Habilita o deshabilita el control de flood
+ • `/setflood <int / 'no' / 'off'>`*: * Habilita o deshabilita el control de flood
  *Ejemplo:* `/ setflood 10`
- • `/setfloodmode <ban / kick / mute / tban / tmute> <valor>` *:* Acción a realizar cuando el usuario ha superado el límite de inundación. ban / kick / mute / tmute / tban
+ • `/setfloodmode <ban / kick / mute / tban / tmute> <valor>`*:* Acción a realizar cuando el usuario ha superado el límite de inundación. ban / kick / mute / tmute / tban
 
 • *Nota:*
- • ¡Se debera completar el valor para tban y tmute !!
+ • Se debera completar el valor para tban y tmute !!
  Puede ser:
  `5m` = 5 minutos
  `6h` = 6 horas
