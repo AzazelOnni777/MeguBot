@@ -7,22 +7,22 @@ Un bot modular de Telegram Python que se ejecuta en python3 con una base de dato
 
 Originalmente un fork de SaitamaRobot.
 
-Se puede encontrar en un telegram como [MeguBot] (https://t.me/MeguABR_Bot).
+Se puede encontrar en un telegram como [MeguBot](https://t.me/MeguABR_Bot).
 
-Puede comunicarse con el grupo de soporte en [Megu Support] (https://t.me/MeguSupport), donde puede solicitar ayuda sobre @MeguABR_Bot, descubrir/solicitar nuevas funciones, informar errores y mantenerse informado cuando sea hay una nueva actualización disponible.
+Puede comunicarse con el grupo de soporte en [Megu Support](https://t.me/MeguSupport), donde puede solicitar ayuda sobre @MeguABR_Bot, descubrir/solicitar nuevas funciones, informar errores y mantenerse informado cuando sea hay una nueva actualización disponible.
 
 ## Cómo configurar/implementar.
 
 ### Lea estas notas detenidamente antes de continuar
  - Edite cualquier mención de @MeguSupport en su propio chat de soporte.
  - No admitimos bifurcaciones, una vez que bifurque el bot y despliegue el dolor de cabeza de los errores y el soporte sea suyo, no venga a nuestro chat de soporte pidiendo ayuda técnica.
- - Su código debe ser de código abierto y debe haber un enlace al repositorio de su bifurcación en la respuesta de inicio del bot. [Ver esto] (https://github.com/NachABR/MeguBot/blob/shiken/MeguBot/__main__.py#L25)
+ - Su código debe ser de código abierto y debe haber un enlace al repositorio de su bifurcación en la respuesta de inicio del bot. [Ver esto](https://github.com/NachABR/MeguBot/MeguBot/__main__.py#L25)
  - Si viene a nuestro chat de soporte en Telegram pidiendo ayuda sobre una "bifurcación" o un problema técnico con un módulo, terminará siendo ignorado o prohibido.
  - Por último, si se encuentra que ejecuta este repositorio sin que el código sea de código abierto o el enlace del repositorio no se menciona en el bot, le enviaremos una gban en nuestra red debido a una violación de la licencia, puede hacerlo Sea un idiota y no respete el código fuente abierto (no nos importa), pero no lo tendremos en nuestros chats.
 
 
 <detalles>
-  <summary> Pasos para implementar en Heroku !! </summary>
+  <summary> Pasos para implementar en Heroku!! </summary>
 
 ''
 Complete todos los detalles, ¡Implemente!
@@ -31,7 +31,7 @@ Encienda el dinamómetro del trabajador (no se preocupe, es gratis :D) y Webhook
 Ahora envíe el bot / start. Si no responde, vaya a https://dashboard.heroku.com/apps/(app-name)/settings y elimine el webhook y el puerto.
 ''
 
-  [! [Implementar] (https://www.herokucdn.com/deploy/button.svg)] (https://heroku.com/deploy?template=https://github.com/Nach/MeguBot.git)
+  [! [Implementar](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Nach/MeguBot.git)
 
 </detalles>
 <detalles>
