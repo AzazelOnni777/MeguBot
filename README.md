@@ -26,7 +26,7 @@ Puede comunicarse con el grupo de soporte en [Megu Support](https://t.me/MeguSup
 Complete todos los detalles, ¡Implemente!
 Ahora vaya a https://dashboard.heroku.com/apps/(app-name)/resources (Reemplace (app-name) con el nombre de su aplicación)
 Encienda el dinamómetro del trabajador (no se preocupe, es gratis :D) y Webhook
-Ahora envíe el bot / start. Si no responde, vaya a https://dashboard.heroku.com/apps/(app-name)/settings y elimine el webhook y el puerto.
+Ahora envíe el bot /start. Si no responde, vaya a https://dashboard.heroku.com/apps/(app-name)/settings y elimine el webhook y el puerto.
 ```
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Nach/MeguBot.git)
 
