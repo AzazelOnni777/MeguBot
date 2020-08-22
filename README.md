@@ -19,23 +19,20 @@ Puede comunicarse con el grupo de soporte en [Megu Support](https://t.me/MeguSup
  - Su código debe ser de código abierto y debe haber un enlace al repositorio de su bifurcación en la respuesta de inicio del bot. [Ver esto](https://github.com/NachABR/MeguBot/MeguBot/__main__.py#L25)
  - Si viene a nuestro chat de soporte en Telegram pidiendo ayuda sobre una "bifurcación" o un problema técnico con un módulo, terminará siendo ignorado o prohibido.
  - Por último, si se encuentra que ejecuta este repositorio sin que el código sea de código abierto o el enlace del repositorio no se menciona en el bot, le enviaremos una gban en nuestra red debido a una violación de la licencia, puede hacerlo Sea un idiota y no respete el código fuente abierto (no nos importa), pero no lo tendremos en nuestros chats.
-
-
 <details>
 <summary>Pasos para implementar en Heroku!!</summary>
- 
-''
+
+```
 Complete todos los detalles, ¡Implemente!
 Ahora vaya a https://dashboard.heroku.com/apps/(app-name)/resources (Reemplace (app-name) con el nombre de su aplicación)
 Encienda el dinamómetro del trabajador (no se preocupe, es gratis :D) y Webhook
 Ahora envíe el bot / start. Si no responde, vaya a https://dashboard.heroku.com/apps/(app-name)/settings y elimine el webhook y el puerto.
-''
-
-  [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Nach/MeguBot.git)
+```
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Nach/MeguBot.git)
 
 </details>
 <details>
- <summary>Pasos para ser anfitrión personal !!</summary>
+ <summary>Pasos para hostearlo!!</summary>
 
 Nota: Este conjunto de instrucciones es solo una copia y pegado de Marie, tenga en cuenta que [Megu Support](https://t.me/MeguSupport) tiene como objetivo manejar el soporte para @MeguABR_Bot y no cómo configurar su propia bifurcación. Si encuentra esto un poco confuso/difícil de entender, le recomendamos que pregunte a un desarrollador, por favor evite preguntar cómo configurar la instancia del bot en el chat de soporte, tiene como objetivo ayudar a nuestra propia instancia del bot y no a las bifurcaciones.
 
@@ -56,20 +53,20 @@ Se recomienda importar sample_config y extender la clase Config, ya que esto ase
 valores predeterminados establecidos en sample_config, lo que facilita la actualización.
 
 Un ejemplo de archivo `config.py` podría ser:
-''
-desde MeguBot.sample_config import Config
+```
+from MeguBot.sample_config import Config
 
-desarrollo de clases (Config):
-    OWNER_ID = 254318997 # su ID de telegrama
-    OWNER_USERNAME = "SonOfLars" # Su nombre de usuario de telegram
-    API_KEY = "your bot api key" # Su clave api, tal como la proporciona @botfather
+class Development(Config):
+    OWNER_ID = 254318997 # Su ID de telegram.
+    OWNER_USERNAME = "SonOfLars" # Su nombre de usuario de telegram.
+    API_KEY = "your bot api key" # Su clave api, tal como la proporciona @botfather.
     SQLALCHEMY_DATABASE_URI = 'postgresql://nombredeusuario:contraseña@localhost:5432/database' # Credenciales de base de datos de muestra.
-    MESSAGE_DUMP = '-1234567890' # Algún chat grupal del que su bot es miembro
-    USE_MESSAGE_DUMP = Verdadero
+    MESSAGE_DUMP = '-1234567890' # Algún chat grupal donde su bot este ahí.
+    USE_MESSAGE_DUMP = True
     SUDO_USERS = [18673980, 83489514] # Lista de identificadores de usuarios que tienen acceso superusuario al bot.
     LOAD = []
-    NO_LOAD = ['traducción']
-''
+    NO_LOAD = ['translation']
+```
 
 Si no puede tener un archivo config.py (EG en Heroku), también es posible usar variables de entorno.
 Se admiten las siguientes variables de entorno:
