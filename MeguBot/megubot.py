@@ -1,4 +1,4 @@
--m megfrom MeguBot import telethn
+from MeguBot import telethn
 from telethon import events
 
 
