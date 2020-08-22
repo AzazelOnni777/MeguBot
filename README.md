@@ -3,11 +3,11 @@
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://perso.crans.org/besson/LICENSE.html) [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 
 
-Un bot modular de Telegram Python que se ejecuta en python3 con una base de datos sqlalchemy.
+Un bot modular de Telegram Python en español que se ejecuta en python3 con una base de datos sqlalchemy.
 
 Originalmente un fork de SaitamaRobot.
 
-Se puede encontrar en un telegram como [MeguBot](https://t.me/MeguABR_Bot).
+Se puede encontrar en telegram como [MeguBot](https://t.me/MeguABR_Bot).
 
 Puede comunicarse con el grupo de soporte en [Megu Support](https://t.me/MeguSupport), donde puede solicitar ayuda sobre @MeguABR_Bot, descubrir/solicitar nuevas funciones, informar errores y mantenerse informado cuando sea hay una nueva actualización disponible.
 
