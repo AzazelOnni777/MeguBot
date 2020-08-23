@@ -281,7 +281,7 @@ dispatcher.add_handler(STOP_HANDLER)
 dispatcher.add_handler(LIST_HANDLER)
 dispatcher.add_handler(CUST_FILTER_HANDLER, HANDLER_GROUP)
 
-__mod_name__ = "Triggers"
+__mod_name__ = "Filters"
 __handlers__ = [
     FILTER_HANDLER, STOP_HANDLER, LIST_HANDLER,
     (CUST_FILTER_HANDLER, HANDLER_GROUP)
