@@ -1,0 +1,148 @@
+{
+   "addons": [
+      {
+         "options": {
+            "version": "12"
+         },
+         "plan": "heroku-postgresql"
+      }
+   ],
+   "description": "Un bot en español de gestión de grupos de Telegram con temática de anime.",
+   "env": {
+      "ALLOW_EXCL": {
+         "description": "Establezca esto en True si lo desea! para ser un prefijo de comando junto con /",
+         "value": "True"
+      },
+      "API_ID": {
+         "description": "Obtenga API_ID de my.telegram.org: esto se usa para módulos basados ​​en Telethon.",
+         "required": true,
+         "value": ""
+      },
+      "API_HASH": {
+         "description": "Obtenga API_HASH de my.telegram.org: esto se usa para módulos basados ​​en Telethon.",
+         "required": true,
+         "value": ""
+      },
+      "BAN_STICKER": {
+         "description": "ID del sticker que desea usar al banear personas.",
+         "required": false,
+         "value": "CAACAgQAAx0CU_rCTAABAczQXyBOv1TsVK4EfwnkCUT1H0GCkPQAAtwAAwEgTQaYsMtAltpEwhoE"
+      },
+      "sw_api": {
+         "description": "Spamwatch API Token - Obten uno en @SpamwatchSupport.",
+         "required": true,
+         "value": ""
+      },     
+      "DEL_CMDS": {
+         "description": "Establezca esto en True si desea eliminar los mensajes de comando de los usuarios que no tienen los permisos para ejecutar ese comando.",
+         "value": "True"
+      },
+      "DONATION_LINK": {
+         "description": "Opcional: enlace donde le gustaría recibir donaciones. Si eres un novato, mejor déjalo enlazando a Paul",
+         "required": false,
+         "value": "https://www.paypal.me/PaulSonOfLars"
+      },
+      "ENV": {
+         "description": "Establecer esto en ANYTHING habilitará las variables de entorno. Déjalo así",
+         "value": "ANYTHING"
+      },
+      "SQLALCHEMY_DATABASE_URI": {
+         "description": "Su postgres sql db, vacíe este campo si no tiene uno.",
+         "required": false,
+         "value": ""
+      },      
+      "OWNER_ID": {
+         "description": "Su ID de usuario como un número entero.",
+         "value": "793104432"
+      },
+      "OWNER_USERNAME": {
+         "description": "Su alias de usuario",
+         "value": "NachABR"
+      },
+      "DEV_USERS": {
+         "description": "ID de los usuarios que son desarrolladores de su bot (pueden usar / py, etc.)",
+         "required": false,
+         "value": ""
+      },
+      "GBAN_LOGS": {
+         "description": "Canal de registro de Gban, incluya también el guión: ej.: -123456",
+         "value": ""
+      },
+      "CASH_API_KEY": {
+         "description": "Requerido para conversor de moneda(https://www.alphavantage.co/)",
+         "value": "-xyz"
+      },
+      "TIME_API_KEY": {
+         "description": "Obligatorio para la información de la zona horaria(https://timezonedb.com/)",
+         "value": "-xyz"
+      },
+      "PORT": {
+         "description": "Puerto a usar para sus webhooks.",
+         "required": false,
+         "value": ""
+      },
+      "STRICT_GBAN": {
+         "description": "Hacer cumplir las gbans en grupos nuevos y antiguos. Cuando un usuario de gban hable, se le prohibirá.",
+         "value": "True"
+      },
+      "SUDO_USERS": {
+         "description": "Una lista separada por espacios de los ID de usuario que desea asignar como usuarios sudo.",
+         "required": false,
+         "value": ""
+      },
+      "SUPPORT_USERS": {
+         "description": "Una lista separada por espacios de ID de usuario que desea asignar como usuarios de soporte (solo permisos de gban).",
+         "required": false,
+         "value": ""
+      },
+      "TIGER_USERS": {
+         "description": "Una lista separada por espacios de ID de usuario que desea asignar como usuarios tigre.",
+         "required": false,
+         "value": ""
+      },
+      "TOKEN": {
+         "description": "TOKEN del bot",
+         "required": true,
+         "value": ""
+      },
+      "SUPPORT_CHAT": {
+         "description": "El nombre de usuario del chat de tu grupo de soporte de Telegram donde tus usuarios irán y te molestarán con mierda. Pero sé como: @MyGroupChatUsernameBlah. Si esto alguna vez apunta a un grupo de Megu, entonces considera que te hiciste un enemigo.",
+         "required": true,
+         "value": "@MeguDev"
+      },   
+      "URL": {
+         "description": "URL de la app de Heroku:-  https://<appname>.herokuapp.com/",
+         "required": false,
+         "value": ""
+      },
+      "WEBHOOK": {
+         "description": "Establecer esto en ANYTHING habilitará webhooks.",
+         "required": false,
+         "value": "ANYTHING"
+      },
+      "No_LOAD": {
+         "description": "No cargues estos módulos porque cagan, separa con espacio",
+         "required": false,
+         "value": "cleaner rss connection"
+      }, 
+      "BL_CHATS": {
+         "description": "Lista de chats que desea incluir en la lista negra.",
+         "required": false,
+         "value": ""
+      },      
+      "WHITELIST_USERS": {
+         "description": "Una lista separada por espacios de los ID de usuario que desea asignar como incluidos en la lista blanca; no se puede prohibir con su bot.",
+         "required": false,
+         "value": ""
+      }
+   },
+   "keywords": [
+      "telegram",
+      "weeb",
+      "group",
+      "manager",
+      "megu"
+   ],
+   "name": "Megu Bot",
+   "repository": "https://github.com/NachABR/MeguBot"
+}
