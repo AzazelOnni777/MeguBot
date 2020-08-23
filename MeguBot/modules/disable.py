@@ -338,7 +338,7 @@ if is_module_loaded(FILENAME):
 • `/listcmds`*:* Lista de todos los posibles comandos desactivables.
     """
 
-    __mod_name__ = "Desactivar Comandos"
+    __mod_name__ = "Command disabling"
 
 else:
     DisableAbleCommandHandler = CommandHandler
