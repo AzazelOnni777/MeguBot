@@ -1,6 +1,6 @@
 # Module to blacklist users and prevent them from using commands by @TheRealPhoenix
 
-import MeguBot.modules.sql.blacklistusers_sql as sql
+import .MeguBot.modules.sql.blacklistusers_sql as sql
 from MeguBot import (DEV_USERS, OWNER_ID, SUDO_USERS, SUPPORT_USERS,
                           WHITELIST_USERS, dispatcher)
 from MeguBot.modules.helper_funcs.chat_status import dev_plus
