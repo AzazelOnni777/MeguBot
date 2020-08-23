@@ -367,7 +367,7 @@ def connect_button(update, context):
         connect_chat(update, context)
 
 
-__mod_name__ = "Conexiones"
+__mod_name__ = "Connection"
 
 __help__ = """
 A veces, solo desea agregar algunas notas y filtros a un chat grupal, pero no desea que todos lo vean; Aquí es donde entran las conexiones...
