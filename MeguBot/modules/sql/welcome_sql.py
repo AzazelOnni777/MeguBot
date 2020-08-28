@@ -118,6 +118,17 @@ DEFAULT_WELCOME_MESSAGES = [
     "{first} just joined. El psy congroo!",  #Steins Gate
     "Irasshaimase {first}!",  #weeabo shit
     "Hi {first}, What is 1000-7?",  #tokyo ghoul
+    "Come. I don't want to destroy this place",  #hunter x hunter
+    "I... am... Whitebeard!...wait..wrong anime.",  #one Piece
+    "Hey {first}...have you ever heard these words?",  #BNHA
+    "Can't a guy get a little sleep around here?",  #Kamina Falls – Gurren Lagann
+    "It's time someone put you in your place, {first}.",  #Hellsing
+    "Unit-01's reactivated..",  #Neon Genesis: Evangelion
+    "Prepare for trouble....And make it double",  #Pokemon
+    "Hey {first}, Are You Challenging Me?",  #Shaggy
+    "Oh? You're Approaching Me?",  #jojo
+    "{first} just warped into the group!",
+    "I..it's..it's just {first}.",
 ]
 DEFAULT_GOODBYE_MESSAGES = [
     "{first} will be missed.",
@@ -189,6 +200,7 @@ class Welcome(BASE):
     chat_id = Column(String(14), primary_key=True)
     should_welcome = Column(Boolean, default=True)
     should_goodbye = Column(Boolean, default=True)
+    custom_content = Column(UnicodeText, default=None)
 
     custom_welcome = Column(
         UnicodeText, default=random.choice(DEFAULT_WELCOME_MESSAGES))
@@ -350,10 +362,11 @@ def get_welc_pref(chat_id):
     welc = SESSION.query(Welcome).get(str(chat_id))
     SESSION.close()
     if welc:
-        return welc.should_welcome, welc.custom_welcome, welc.welcome_type
+        return welc.should_welcome, welc.custom_welcome, welc.custom_content, welc.welcome_type
+
     else:
         # Welcome by default.
-        return True, DEFAULT_WELCOME, Types.TEXT
+        return True, DEFAULT_WELCOME, None, Types.TEXT
 
 
 def get_gdbye_pref(chat_id):
@@ -412,7 +425,11 @@ def set_gdbye_preference(chat_id, should_goodbye):
         SESSION.commit()
 
 
-def set_custom_welcome(chat_id, custom_welcome, welcome_type, buttons=None):
+def set_custom_welcome(chat_id,
+                       custom_content,
+                       custom_welcome,
+                       welcome_type,
+                       buttons=None):
     if buttons is None:
         buttons = []
 
@@ -421,12 +438,13 @@ def set_custom_welcome(chat_id, custom_welcome, welcome_type, buttons=None):
         if not welcome_settings:
             welcome_settings = Welcome(str(chat_id), True)
 
-        if custom_welcome:
+        if custom_welcome or custom_content:
+            welcome_settings.custom_content = custom_content
             welcome_settings.custom_welcome = custom_welcome
             welcome_settings.welcome_type = welcome_type.value
 
         else:
-            welcome_settings.custom_welcome = DEFAULT_GOODBYE
+            welcome_settings.custom_welcome = DEFAULT_WELCOME
             welcome_settings.welcome_type = Types.TEXT.value
 
         SESSION.add(welcome_settings)
