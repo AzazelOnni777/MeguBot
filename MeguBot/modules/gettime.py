@@ -43,14 +43,14 @@ def generate_time(to_find: str, findtype: List[str]) -> str:
 
     try:
         result = (
-            f'<b>Country:</b> <code>{country_name}</code>\n'
-            f'<b>Zone Name:</b> <code>{country_zone}</code>\n'
-            f'<b>Country Code:</b> <code>{country_code}</code>\n'
-            f'<b>Daylight saving:</b> <code>{daylight_saving}</code>\n'
-            f'<b>Day:</b> <code>{current_day}</code>\n'
-            f'<b>Current Time:</b> <code>{current_time}</code>\n'
-            f'<b>Current Date:</b> <code>{current_date}</code>\n'
-            '<b>Timezones:</b> <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">List here</a>'
+            f'<b>Pais:</b> <code>{country_name}</code>\n'
+            f'<b>Nombre de zona:</b> <code>{country_zone}</code>\n'
+            f'<b>Código de Pais:</b> <code>{country_code}</code>\n'
+            f'<b>Horario de verano:</b> <code>{daylight_saving}</code>\n'
+            f'<b>Día:</b> <code>{current_day}</code>\n'
+            f'<b>Tiempo actual:</b> <code>{current_time}</code>\n'
+            f'<b>Fecha actual:</b> <code>{current_date}</code>\n'
+            '<b>Zonas horarias:</b> <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">Lista aquí</a>'
         )
     except:
         result = None
@@ -66,7 +66,7 @@ def gettime(update: Update, context: CallbackContext):
         query = message.text.strip().split(" ", 1)[1]
     except:
         message.reply_text(
-            "Provide a country name/abbreviation/timezone to find.")
+            "Dame un nombre/abreviatura/zona horaria del país para buscar.")
         return
     send_message = message.reply_text(
         f"Finding timezone info for <b>{query}</b>", parse_mode=ParseMode.HTML)
@@ -79,8 +79,8 @@ def gettime(update: Update, context: CallbackContext):
 
     if not result:
         send_message.edit_text(
-            f'Timezone info not available for <b>{query}</b>\n'
-            '<b>All Timezones:</b> <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">List here</a>',
+            f'La información de zona horaria no está disponible para <b>{query}</b>\n'
+            '<b>Todas las zonas horarias:</b> <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">Lista aquí</a>',
             parse_mode=ParseMode.HTML,
             disable_web_page_preview=True)
         return
@@ -90,10 +90,10 @@ def gettime(update: Update, context: CallbackContext):
 
 
 __help__ = """
- • `/time <query>`*:* Gives information about a timezone.
+ • `/time <lugar>`*:* Da información sobre una zona horaria.
 
-*Available queries:* Country Code/Country Name/Timezone Name
-• 🕐 [Timezones list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+*Lugares disponibles:* Código de país/Nombre de país/Nombre de zona horaria.
+• 🕐 [Lista de Zonas Horarias](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 """
 
 TIME_HANDLER = DisableAbleCommandHandler("time", gettime)
