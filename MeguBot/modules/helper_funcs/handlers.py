@@ -1,4 +1,4 @@
-import .MeguBot.modules.sql.blacklistusers_sql as sql
+import MeguBot.modules.sql.blacklistusers_sql as sql
 from MeguBot import ALLOW_EXCL
 from telegram import MessageEntity, Update
 from telegram.ext import CommandHandler, MessageHandler, RegexHandler, Filters
