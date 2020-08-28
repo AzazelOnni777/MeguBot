@@ -455,7 +455,7 @@ def __migrate__(old_chat_id, new_chat_id):
 
 def __chat_settings__(chat_id, user_id):
     blacklisted = sql.num_stickers_chat_filters(chat_id)
-    return "Hay "{}" stickers en la lista negra.".format(blacklisted)
+    return "Hay '{}' stickers en la lista negra.".format(blacklisted)
 
 
 def __stats__():
