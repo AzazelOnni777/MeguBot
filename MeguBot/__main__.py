@@ -44,7 +44,7 @@ las cosas con las que puedo ayudarte.
 And the following:
 """.format(
     dispatcher.bot.first_name, ""
-    if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
+    if not ALLOW_EXCL else "\nTodos los comandos pueden usarse con / o !.\n")
 
 MEGU_IMG = "https://telegra.ph/file/4645f09a45e70298624d7.jpg"
 
@@ -74,7 +74,7 @@ for module_name in ALL_MODULES:
         IMPORTED[imported_module.__mod_name__.lower()] = imported_module
     else:
         raise Exception(
-            "Can't have two modules with the same name! Please change one")
+            "¡No se pueden tener dos módulos con el mismo nombre! Por favor cambie uno")
 
     if hasattr(imported_module, "__help__") and imported_module.__help__:
         HELPABLE[imported_module.__mod_name__.lower()] = imported_module
@@ -203,7 +203,7 @@ def help_button(update: Update, context: CallbackContext):
     try:
         if mod_match:
             module = mod_match.group(1)
-            text = "Here is the help for the *{}* module:\n".format(HELPABLE[module].__mod_name__) \
+            text = "Aquí está la ayuda para el módulo *{}*:\n".format(HELPABLE[module].__mod_name__) \
                    + HELPABLE[module].__help__
             query.message.reply_text(
                 text=text,
@@ -211,7 +211,7 @@ def help_button(update: Update, context: CallbackContext):
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton(
-                        text="Back", callback_data="help_back")
+                        text="Atrás", callback_data="help_back")
                 ]]))
 
         elif prev_match:
@@ -260,22 +260,22 @@ def get_help(update: Update, context: CallbackContext):
     if chat.type != chat.PRIVATE:
 
         update.effective_message.reply_text(
-            "Contact me in PM to get the list of possible commands.",
+            "Contácteme en privado para obtener la lista de comandos.",
             reply_markup=InlineKeyboardMarkup([[
                 InlineKeyboardButton(
-                    text="Help",
+                    text="Ayuda",
                     url="t.me/{}?start=help".format(context.bot.username))
             ]]))
         return
 
     elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
         module = args[1].lower()
-        text = "Here is the available help for the *{}* module:\n".format(HELPABLE[module].__mod_name__) \
+        text = "Aquí está la ayuda disponible para el módulo *{}*:\n".format(HELPABLE[module].__mod_name__) \
                + HELPABLE[module].__help__
         send_help(
             chat.id, text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back",
+                [[InlineKeyboardButton(text="Atrás",
                                        callback_data="help_back")]]))
 
     else:
@@ -290,13 +290,13 @@ def send_settings(chat_id, user_id, user=False):
                                    for mod in USER_SETTINGS.values())
             dispatcher.bot.send_message(
                 user_id,
-                "These are your current settings:" + "\n\n" + settings,
+                "Estas son tus configuraciones actuales:" + "\n\n" + settings,
                 parse_mode=ParseMode.MARKDOWN)
 
         else:
             dispatcher.bot.send_message(
                 user_id,
-                "Seems like there aren't any user specific settings available :'(",
+                "Parece que no hay ninguna configuración disponible :'(",
                 parse_mode=ParseMode.MARKDOWN)
 
     else:
@@ -304,15 +304,15 @@ def send_settings(chat_id, user_id, user=False):
             chat_name = dispatcher.bot.getChat(chat_id).title
             dispatcher.bot.send_message(
                 user_id,
-                text="Which module would you like to check {}'s settings for?"
+                text="Para qué módulo le gustaría verificar la configuración de {}?"
                 .format(chat_name),
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(0, CHAT_SETTINGS, "stngs", chat=chat_id)))
         else:
             dispatcher.bot.send_message(
                 user_id,
-                "Seems like there aren't any chat settings available :'(\nSend this "
-                "in a group chat you're admin in to find its current settings!",
+                "Parece que no hay ninguna configuración de chat disponible :'(\nEnvíe esto "
+                "en un grupo en el que sea administrador para encontrar su configuración actual.",
                 parse_mode=ParseMode.MARKDOWN)
 
 
@@ -330,7 +330,7 @@ def settings_button(update: Update, context: CallbackContext):
             chat_id = mod_match.group(1)
             module = mod_match.group(2)
             chat = bot.get_chat(chat_id)
-            text = "*{}* has the following settings for the *{}* module:\n\n".format(escape_markdown(chat.title),
+            text = "*{}* tiene la siguiente configuración para el módulo *{}*:\n\n".format(escape_markdown(chat.title),
                                                                                      CHAT_SETTINGS[module].__mod_name__) + \
                    CHAT_SETTINGS[module].__chat_settings__(chat_id, user.id)
             query.message.reply_text(
@@ -347,8 +347,8 @@ def settings_button(update: Update, context: CallbackContext):
             curr_page = int(prev_match.group(2))
             chat = bot.get_chat(chat_id)
             query.message.reply_text(
-                "Hi there! There are quite a few settings for {} - go ahead and pick what "
-                "you're interested in.".format(chat.title),
+                "¡Hola! Hay bastantes configuraciones para {}. Continúe y elije qué "
+                "lo que guste.".format(chat.title),
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(
                         curr_page - 1, CHAT_SETTINGS, "stngs", chat=chat_id)))
@@ -358,8 +358,8 @@ def settings_button(update: Update, context: CallbackContext):
             next_page = int(next_match.group(2))
             chat = bot.get_chat(chat_id)
             query.message.reply_text(
-                "Hi there! There are quite a few settings for {} - go ahead and pick what "
-                "you're interested in.".format(chat.title),
+                "¡Hola! Hay bastantes configuraciones para {}. Continúe y elije qué "
+                "lo que te guste.".format(chat.title),
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(
                         next_page + 1, CHAT_SETTINGS, "stngs", chat=chat_id)))
@@ -368,8 +368,8 @@ def settings_button(update: Update, context: CallbackContext):
             chat_id = back_match.group(1)
             chat = bot.get_chat(chat_id)
             query.message.reply_text(
-                text="Hi there! There are quite a few settings for {} - go ahead and pick what "
-                "you're interested in.".format(escape_markdown(chat.title)),
+                text="¡Hola! Hay bastantes configuraciones para {}. Continúe y elije qué "
+                "lo que te guste.".format(escape_markdown(chat.title)),
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(0, CHAT_SETTINGS, "stngs", chat=chat_id)))
