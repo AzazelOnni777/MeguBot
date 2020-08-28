@@ -69,7 +69,7 @@ def gettime(update: Update, context: CallbackContext):
             "Dame un nombre/abreviatura/zona horaria del país para buscar.")
         return
     send_message = message.reply_text(
-        f"Finding timezone info for <b>{query}</b>", parse_mode=ParseMode.HTML)
+        f"Buscando información de zona horaria para <b>{query}</b>", parse_mode=ParseMode.HTML)
 
     query_timezone = query.lower()
     if len(query_timezone) == 2:
@@ -100,6 +100,6 @@ TIME_HANDLER = DisableAbleCommandHandler("time", gettime)
 
 dispatcher.add_handler(TIME_HANDLER)
 
-__mod_name__ = "Time"
+__mod_name__ = "Tiempo"
 __command_list__ = ["time"]
 __handlers__ = [TIME_HANDLER]
