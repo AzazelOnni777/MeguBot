@@ -74,7 +74,7 @@ for module_name in ALL_MODULES:
         IMPORTED[imported_module.__mod_name__.lower()] = imported_module
     else:
         raise Exception(
-            "¡No se pueden tener dos módulos con el mismo nombre! Por favor cambie uno")
+            "No se pueden tener dos módulos con el mismo nombre! Por favor cambie uno")
 
     if hasattr(imported_module, "__help__") and imported_module.__help__:
         HELPABLE[imported_module.__mod_name__.lower()] = imported_module
@@ -398,17 +398,17 @@ def get_settings(update: Update, context: CallbackContext):
     # ONLY send settings in PM
     if chat.type != chat.PRIVATE:
         if is_user_admin(chat, user.id):
-            text = "Click here to get this chat's settings, as well as yours."
+            text = "Haga clic aquí para obtener la configuración de este chat."
             msg.reply_text(
                 text,
                 reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton(
-                        text="Settings",
+                        text="Configuración",
                         url="t.me/{}?start=stngs_{}".format(
                             context.bot.username, chat.id))
                 ]]))
         else:
-            text = "Click here to check your settings."
+            text = "Haga clic aquí para verificar su configuración."
 
     else:
         send_settings(chat.id, user.id, True)
@@ -427,8 +427,8 @@ def donate(update: Update, context: CallbackContext):
 
         if OWNER_ID != 254318997 and DONATION_LINK:
             update.effective_message.reply_text(
-                "You can also donate to the person currently running me "
-                "[here]({})".format(DONATION_LINK),
+                "También puedes donar a la persona que actualmente me hostea "
+                "[aquí]({})".format(DONATION_LINK),
                 parse_mode=ParseMode.MARKDOWN)
 
     else:
@@ -440,10 +440,10 @@ def donate(update: Update, context: CallbackContext):
                 disable_web_page_preview=True)
 
             update.effective_message.reply_text(
-                "I've PM'ed you about donating to my creator!")
+                "Le envié un privado a mi creador sobre la donacion!")
         except Unauthorized:
             update.effective_message.reply_text(
-                "Contact me in PM first to get donation information.")
+                "Comunícate conmigo en privado primero para obtener información sobre donaciones.")
 
 
 def migrate_chats(update: Update, context: CallbackContext):
@@ -457,11 +457,11 @@ def migrate_chats(update: Update, context: CallbackContext):
     else:
         return
 
-    LOGGER.info("Migrating from %s, to %s", str(old_chat), str(new_chat))
+    LOGGER.info("Migrando de %s a %s", str(old_chat), str(new_chat))
     for mod in MIGRATEABLE:
         mod.__migrate__(old_chat, new_chat)
 
-    LOGGER.info("Successfully migrated!")
+    LOGGER.info("Migrado exitosamente!")
     raise DispatcherHandlerStop
 
 
