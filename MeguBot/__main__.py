@@ -304,7 +304,7 @@ def send_settings(chat_id, user_id, user=False):
             chat_name = dispatcher.bot.getChat(chat_id).title
             dispatcher.bot.send_message(
                 user_id,
-                text="Para qué módulo le gustaría verificar la configuración de {}?"
+                text="Para qué módulo le gustaría cambiar la configuración de {}?"
                 .format(chat_name),
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(0, CHAT_SETTINGS, "stngs", chat=chat_id)))
@@ -408,7 +408,7 @@ def get_settings(update: Update, context: CallbackContext):
                             context.bot.username, chat.id))
                 ]]))
         else:
-            text = "Haga clic aquí para verificar su configuración."
+            text = "Haga clic aquí para cambiar la configuración."
 
     else:
         send_settings(chat.id, user.id, True)
