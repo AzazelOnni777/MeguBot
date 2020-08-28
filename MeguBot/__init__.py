@@ -21,7 +21,7 @@ LOGGER = logging.getLogger(__name__)
 # if version < 3.6, stop bot.
 if sys.version_info[0] < 3 or sys.version_info[1] < 6:
     LOGGER.error(
-        "DEBE tener una versión de Python de al menos 3.6! Varias funciones dependen de esto. Apagando bot."
+        "You MUST have a python version of at least 3.6! Multiple features depend on this. Bot quitting."
     )
     quit(1)
 
@@ -33,7 +33,7 @@ if ENV:
     try:
         OWNER_ID = int(os.environ.get('OWNER_ID', None))
     except ValueError:
-        raise Exception("La variable OWNER_ID no es válida.")
+        raise Exception("Your OWNER_ID env variable is not a valid integer.")
 
     MESSAGE_DUMP = os.environ.get('MESSAGE_DUMP', None)
     OWNER_USERNAME = os.environ.get("OWNER_USERNAME", None)
@@ -44,28 +44,28 @@ if ENV:
         DEV_USERS = set(int(x) for x in os.environ.get("DEV_USERS", "").split())
     except ValueError:
         raise Exception(
-            "Su lista de usuarios de superusuarios o desarrolladores no contiene números enteros válidos.")
+            "Your sudo or dev users list does not contain valid integers.")
 
     try:
         SUPPORT_USERS = set(
             int(x) for x in os.environ.get("SUPPORT_USERS", "").split())
     except ValueError:
         raise Exception(
-            "Su lista de usuarios de soporte no contiene números enteros válidos.")
+            "Your support users list does not contain valid integers.")
 
     try:
         WHITELIST_USERS = set(
             int(x) for x in os.environ.get("WHITELIST_USERS", "").split())
     except ValueError:
         raise Exception(
-            "Su lista de usuarios incluidos en la lista blanca no contiene números enteros válidos.")
+            "Your whitelisted users list does not contain valid integers.")
 
     try:
         TIGER_USERS = set(
             int(x) for x in os.environ.get("TIGER_USERS", "").split())
     except ValueError:
         raise Exception(
-            "Su lista de usuarios de Tiger no contiene números enteros válidos.")
+            "Your tiger users list does not contain valid integers.")
 
     GBAN_LOGS = os.environ.get('GBAN_LOGS', None)
     WEBHOOK = bool(os.environ.get('WEBHOOK', False))
@@ -96,16 +96,16 @@ if ENV:
         BL_CHATS = set(int(x) for x in os.environ.get('BL_CHATS', "").split())
     except ValueError:
         raise Exception(
-            "Tu lista de chats en la lista negra no contiene números enteros válidos.")
+            "Your blacklisted chats list does not contain valid integers.")
 
 else:
     from MeguBot.config import Development as Config
-    TOKEN = Config.API_KEY
+    TOKEN = Config.TOKEN
 
     try:
         OWNER_ID = int(Config.OWNER_ID)
     except ValueError:
-        raise Exception("Su variable OWNER_ID no es válida.")
+        raise Exception("Your OWNER_ID variable is not a valid integer.")
 
     MESSAGE_DUMP = Config.MESSAGE_DUMP
     OWNER_USERNAME = Config.OWNER_USERNAME
@@ -115,25 +115,25 @@ else:
         DEV_USERS = set(int(x) for x in Config.DEV_USERS or [])
     except ValueError:
         raise Exception(
-            "Su lista de usuarios de superusuarios o desarrolladores no contiene números enteros válidos.")
+            "Your sudo or dev users list does not contain valid integers.")
 
     try:
         SUPPORT_USERS = set(int(x) for x in Config.SUPPORT_USERS or [])
     except ValueError:
         raise Exception(
-            "Su lista de usuarios de soporte no contiene números enteros válidos.")
+            "Your support users list does not contain valid integers.")
 
     try:
         WHITELIST_USERS = set(int(x) for x in Config.WHITELIST_USERS or [])
     except ValueError:
         raise Exception(
-            "Su lista de usuarios incluidos en la lista blanca no contiene números enteros válidos.")
+            "Your whitelisted users list does not contain valid integers.")
 
     try:
         TIGER_USERS = set(int(x) for x in Config.TIGER_USERS or [])
     except ValueError:
         raise Exception(
-            "Su lista de usuarios de Tiger no contiene números enteros válidos.")
+            "Your tiger users list does not contain valid integers.")
 
     GBAN_LOGS = Config.GBAN_LOGS
     WEBHOOK = Config.WEBHOOK
@@ -164,7 +164,7 @@ else:
         BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
     except ValueError:
         raise Exception(
-            "Tu lista de chats en la lista negra no contiene números enteros válidos.")
+            "Your blacklisted chats list does not contain valid integers.")
 
 SUDO_USERS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
@@ -176,7 +176,7 @@ else:
     sw = spamwatch.Client(SPAMWATCH_API)
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient("megubot", API_ID, API_HASH)
+telethn = TelegramClient("meguabrbot", API_ID, API_HASH)
 dispatcher = updater.dispatcher
 
 SUDO_USERS = list(SUDO_USERS) + list(DEV_USERS)
