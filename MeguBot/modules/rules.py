@@ -27,8 +27,8 @@ def send_rules(update, chat_id, from_pm=False):
         if excp.message == "Chat not found" and from_pm:
             bot.send_message(
                 user.id,
-                "The rules shortcut for this chat hasn't been set properly! Ask admins to "
-                "fix this.")
+                "El atajo de reglas para este chat no se ha configurado correctamente! Pida a los administradores que "
+                "arreglen esto.")
             return
         else:
             raise
@@ -45,19 +45,19 @@ def send_rules(update, chat_id, from_pm=False):
     elif from_pm:
         bot.send_message(
             user.id,
-            "The group admins haven't set any rules for this chat yet. "
-            "This probably doesn't mean it's lawless though...!")
+            "Los administradores del grupo aún no han establecido ninguna regla para este chat.. "
+            "Aunque esto probablemente no significa que se permitan cosas ilegales...")
     elif rules:
         update.effective_message.reply_text(
-            "Contact me in PM to get this group's rules.",
+            "Contáctame en privado para conocer las reglas de este grupo.",
             reply_markup=InlineKeyboardMarkup([[
                 InlineKeyboardButton(
-                    text="Rules", url=f"t.me/{bot.username}?start={chat_id}")
+                    text="Reglas", url=f"t.me/{bot.username}?start={chat_id}")
             ]]))
     else:
         update.effective_message.reply_text(
-            "The group admins haven't set any rules for this chat yet. "
-            "This probably doesn't mean it's lawless though...!")
+            "Los administradores del grupo aún no han establecido ninguna regla para este chat.. "
+            "Aunque esto probablemente no significa que se permitan cosas ilegales...!")
 
 
 @run_async
@@ -77,7 +77,7 @@ def set_rules(update: Update, context: CallbackContext):
 
         sql.set_rules(chat_id, markdown_rules)
         update.effective_message.reply_text(
-            "Successfully set rules for this group.")
+            "Se establecieron las reglas para este grupo con éxitosamente.")
 
 
 @run_async
