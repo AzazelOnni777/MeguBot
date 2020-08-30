@@ -38,8 +38,8 @@ Echa un vistazo a lo siguiente para ver algunas de las cosas con las que puedo a
  • /help <nombre del módulo>: PM es la información sobre ese módulo.
  • /donate: Información sobre cómo donar!
  • /settings:
-          • En privado: le enviará la configuración    de todos los módulos compatibles.
-          • En un grupo: te redirigirá a PM, con    todos los ajustes de ese chat.
+  • En privado: le enviará la configuración de todos los módulos compatibles.
+  • En un grupo: te redirigirá a PM, con todos los ajustes de ese chat.
 
 Y lo siguiente:
 """.format(
