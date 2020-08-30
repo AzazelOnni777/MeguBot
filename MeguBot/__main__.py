@@ -23,14 +23,15 @@ from telegram.utils.helpers import escape_markdown
 PM_START_TEXT = """
 Hola {}, mi nombre es {}! 
 Soy un bot de gestión de grupo con tematica de Anime.
-Puede encontrar mi lista de comandos disponibles con /help.
+
+Puedes encontrar mi lista de comandos disponibles con /help.
 """
 
 HELP_STRINGS = """
 
 ¡Hola {}, Mi nombre es *{}*!
-¡Soy una amante a las explosiones y ayudo a los administradores a administrar sus grupos con Explosion! Echa un vistazo a lo siguiente para una idea de algunos de los
-las cosas con las que puedo ayudarte.
+¡Soy una amante a las explosiones y ayudo a los administradores a administrar sus grupos con Explosion!
+Echa un vistazo a lo siguiente para ver algunas de las cosas con las que puedo ayudarte.
 
 *Principales* comandos disponibles:
  • /start: Inicie el bot
@@ -48,10 +49,8 @@ And the following:
 
 MEGU_IMG = "https://telegra.ph/file/4645f09a45e70298624d7.jpg"
 
-DONATE_STRING = """Heya, me alegra oír que quieres donar!
-Puedes hablar con @NachABR.
-Tambien puedes donar al escritor original del código Base, Paul
-Hay dos maneras de apoyarlo; [PayPal](paypal.me/PaulSonOfLars), o [Monzo](monzo.me/paulnionvestergaardlarsen)."""
+DONATE_STRING = """Heya, me alegra oír que quieres donar! Puedes hablar con @NachABR.
+Tambien puedes donar al escritor original del código Base, Paul. Hay dos maneras de apoyarlo; [PayPal](paypal.me/PaulSonOfLars), o [Monzo](monzo.me/paulnionvestergaardlarsen)."""
 
 IMPORTED = {}
 MIGRATEABLE = []
