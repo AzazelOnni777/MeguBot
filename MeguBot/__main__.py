@@ -21,31 +21,30 @@ from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
 from telegram.utils.helpers import escape_markdown
 
 PM_START_TEXT = """
-Hola {}, mi nombre es {}! 
+Hola {}, mi nombre es *{}*! 
 Soy un bot de gestión de grupo con tematica de Anime.
 
 Puedes encontrar mi lista de comandos disponibles con /help.
 """
 
 HELP_STRINGS = """
-
-¡Hola {}, Mi nombre es *{}*!
-¡Soy una amante a las explosiones y ayudo a los administradores a administrar sus grupos con Explosion!
+Hola {}, mi nombre es *{}*!
+Soy una amante a las explosiones y ayudo a los administradores a administrar sus grupos con Explosion!
 Echa un vistazo a lo siguiente para ver algunas de las cosas con las que puedo ayudarte.
 
-*Principales* comandos disponibles:
+*Principales comandos disponibles*:
  • /start: Inicie el bot
- • /help: PM es usted este mensaje.
+ • /help:  este mensaje.
  • /help <nombre del módulo>: PM es la información sobre ese módulo.
  • /donate: Información sobre cómo donar!
  • /settings:
- • En PM: le enviará la configuración de todos los módulos compatibles.
- • En un grupo: te redirigirá a PM, con todos los ajustes de ese chat.
+          • En privado: le enviará la configuración de todos los módulos compatibles.
+          • En un grupo: te redirigirá a PM, con todos los ajustes de ese chat.
 
-And the following:
+Y lo siguiente:
 """.format(
     dispatcher.bot.first_name, ""
-    if not ALLOW_EXCL else "\nTodos los comandos pueden usarse con / o !.\n")
+    if not ALLOW_EXCL else "\nTodos los comandos pueden usarse con / o !\n")
 
 MEGU_IMG = "https://telegra.ph/file/4645f09a45e70298624d7.jpg"
 
