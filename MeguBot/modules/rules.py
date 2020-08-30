@@ -77,7 +77,7 @@ def set_rules(update: Update, context: CallbackContext):
 
         sql.set_rules(chat_id, markdown_rules)
         update.effective_message.reply_text(
-            "Se establecieron las reglas para este grupo con éxitosamente.")
+            "Se establecieron las reglas para este grupo éxitosamente.")
 
 
 @run_async
@@ -85,11 +85,11 @@ def set_rules(update: Update, context: CallbackContext):
 def clear_rules(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     sql.set_rules(chat_id, "")
-    update.effective_message.reply_text("Successfully cleared rules!")
+    update.effective_message.reply_text("Reglas borradas éxitosamente!")
 
 
 def __stats__():
-    return f"{sql.num_chats()} chats have rules set."
+    return f"{sql.num_chats()} chats tienen reglas establecidas."
 
 
 def __import_data__(chat_id, data):
@@ -103,15 +103,15 @@ def __migrate__(old_chat_id, new_chat_id):
 
 
 def __chat_settings__(chat_id, user_id):
-    return f"This chat has had it's rules set: `{bool(sql.get_rules(chat_id))}`"
+    return f"Este chat tiene sus reglas establecidas: `{bool(sql.get_rules(chat_id))}`"
 
 
 __help__ = """
- • `/rules`*:* get the rules for this chat.
+ •`/rules`*:* Obtiene las reglas para este chat.
 
-*Admins only:*
- • `/setrules <your rules here>`*:* set the rules for this chat.
- • `/clearrules`*:* clear the rules for this chat.
+*Solo administradores:*
+  •`/setrules <sus reglas aquí>`*:* Establece las reglas para este chat.
+  •`/clearrules`*:* Borra las reglas para este chat.
 """
 
 __mod_name__ = "Rules"
