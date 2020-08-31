@@ -27,7 +27,7 @@ def weebify(update: Update, context: CallbackContext):
 
     if not string:
         message.reply_text(
-            "Usage is `/weebify <text>`", parse_mode=ParseMode.MARKDOWN)
+            "El uso es `/weebify <texto>`", parse_mode=ParseMode.MARKDOWN)
         return
 
     for normiecharacter in string:
@@ -42,7 +42,7 @@ def weebify(update: Update, context: CallbackContext):
 
 
 __help__ = """
- • `/weebify <text>`*:* returns a weebified text
+ • `/weebify <texto>`*:* Regresa un texto weebificado.
  """
 
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify)
