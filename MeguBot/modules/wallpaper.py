@@ -18,7 +18,7 @@ def wall(update: Update, context: CallbackContext):
     bot = context.bot
     query = " ".join(args)
     if not query:
-        msg.reply_text("Please enter a query!")
+        msg.reply_text("Por favor ingrse su busqueda!")
         return
     else:
         caption = query
@@ -27,11 +27,11 @@ def wall(update: Update, context: CallbackContext):
             f"https://wall.alphacoders.com/api2.0/get.php?auth={WALL_API}&method=search&term={term}"
         ).json()
         if not json_rep.get("success"):
-            msg.reply_text(f"An error occurred! Report this {SUPPORT_CHAT}")
+            msg.reply_text(f"¡Ocurrió un error! Informar esto en {SUPPORT_CHAT}")
         else:
             wallpapers = json_rep.get("wallpapers")
             if not wallpapers:
-                msg.reply_text("No results found! Refine your search.")
+                msg.reply_text("No se han encontrado resultados! Refina tu búsqueda.")
                 return
             else:
                 index = randint(0, len(wallpapers) - 1)  # Choose random index
