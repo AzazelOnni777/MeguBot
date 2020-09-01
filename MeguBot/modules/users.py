@@ -42,7 +42,7 @@ def get_user_id(username):
                 if excp.message == 'Chat not found':
                     pass
                 else:
-                    LOGGER.exception("Error extracting user ID")
+                    LOGGER.exception("Error al extraer el ID de usuario")
 
     return None
 
@@ -85,7 +85,7 @@ def broadcast(update: Update, context: CallbackContext):
                                    str(user.user_id))
 
         update.effective_message.reply_text(
-            f"Broadcast complete. {failed} groups failed to receive the message, probably due to being kicked. {failed_user} failed to receive message, probably due to being blocked"
+            f"Transmisión completa. {failed} grupos no pudieron recibir el mensaje, probablemente debido a que fueron expulsados. {failed_user} no pudo recibir el mensaje, probablemente debido a que estaba bloqueado"
         )
 
 
@@ -110,7 +110,7 @@ def log_user(update: Update, context: CallbackContext):
 @sudo_plus
 def chats(update: Update, context: CallbackContext):
     all_chats = sql.get_all_chats() or []
-    chatfile = 'List of chats.\n0. Chat name | Chat ID | Members count\n'
+    chatfile = 'Lista de chats.\n0. Nombre del chat | ID de chat | Cantidad de Miembros\n'
     P = 1
     for chat in all_chats:
         try:
@@ -128,7 +128,7 @@ def chats(update: Update, context: CallbackContext):
         update.effective_message.reply_document(
             document=output,
             filename="chatlist.txt",
-            caption="Here is the list of chats in my database.")
+            caption="Aquí está la lista de chats en mi base de datos.")
 
 
 @run_async
@@ -141,13 +141,13 @@ def chat_checker(update: Update, context: CallbackContext):
 
 def __user_info__(user_id):
     if user_id == dispatcher.bot.id:
-        return """I've seen them in... Wow. Are they stalking me? They're in all the same places I am... oh. It's me."""
+        return """Los he visto en... Wow. Me están acechando? Están en los mismos lugares que yo... oh. Soy yo."""
     num_chats = sql.get_user_num_chats(user_id)
-    return f"""I've seen them in <code>{num_chats}</code> chats in total."""
+    return f"""Los he visto en <code>{num_chats}</code> chats en total."""
 
 
 def __stats__():
-    return f"{sql.num_users()} users, across {sql.num_chats()} chats"
+    return f"Usuarios de {sql.num_users()} en los chats de {sql.num_chats()}"
 
 
 def __migrate__(old_chat_id, new_chat_id):
@@ -167,6 +167,6 @@ dispatcher.add_handler(BROADCAST_HANDLER)
 dispatcher.add_handler(CHATLIST_HANDLER)
 dispatcher.add_handler(CHAT_CHECKER_HANDLER, CHAT_GROUP)
 
-__mod_name__ = "Users"
+__mod_name__ = "Usuarios"
 __handlers__ = [(USER_HANDLER, USERS_GROUP), BROADCAST_HANDLER,
                 CHATLIST_HANDLER]
