@@ -24,7 +24,7 @@ def totranslate(update: Update, context: CallbackContext):
             try:
                 source_lang = args[1].split(None, 1)[0]
             except:
-                source_lang = "en"
+                source_lang = "es"
 
             if source_lang.count('-') == 2:
                 for lang in problem_lang_code:
@@ -58,12 +58,12 @@ def totranslate(update: Update, context: CallbackContext):
                 detection = trl.detect(text)
                 tekstr = trl.translate(text, dest=dest_lang)
                 return message.reply_text(
-                    f"Translated from `{detection.lang}` to `{dest_lang}`:\n`{tekstr.text}`",
+                    f"Traducido del `{detection.lang}` al `{dest_lang}`:\n`{tekstr.text}`",
                     parse_mode=ParseMode.MARKDOWN)
             else:
                 tekstr = trl.translate(text, dest=dest_lang, src=source_lang)
                 message.reply_text(
-                    f"Translated from `{source_lang}` to `{dest_lang}`:\n`{tekstr.text}`",
+                    f"Traducido del `{source_lang}` al `{dest_lang}`:\n`{tekstr.text}`",
                     parse_mode=ParseMode.MARKDOWN)
         else:
             args = update.effective_message.text.split(None, 2)
@@ -98,41 +98,41 @@ def totranslate(update: Update, context: CallbackContext):
                 detection = trl.detect(text)
                 tekstr = trl.translate(text, dest=source_lang)
                 return message.reply_text(
-                    "Translated from `{}` to `{}`:\n`{}`".format(
+                    "Traducido del `{}` al `{}`:\n`{}`".format(
                         detection.lang, source_lang, tekstr.text),
                     parse_mode=ParseMode.MARKDOWN)
             else:
                 tekstr = trl.translate(text, dest=dest_lang, src=source_lang)
                 message.reply_text(
-                    "Translated from `{}` to `{}`:\n`{}`".format(
+                    "Traducido del `{}` al `{}`:\n`{}`".format(
                         source_lang, dest_lang, tekstr.text),
                     parse_mode=ParseMode.MARKDOWN)
 
     except IndexError:
         update.effective_message.reply_text(
-            "Reply to messages or write messages from other languages ​​for translating into the intended language\n\n"
-            "Example: `/tr en-ml` to translate from English to Malayalam\n"
-            "Or use: `/tr ml` for automatic detection and translating it into Malayalam.\n"
-            "See [List of Language Codes](t.me/OnePunchSupport/12823) for a list of language codes.",
+            "Responder mensajes o escribir mensajes en otros idiomas para traducirlos al idioma deseado\n\n"
+            "Ejemplo: `/tr en-ml` para traducir del inglés al Malayalam\n"
+            "O use: `/tr ml` para la detección automática y su traducción al malayalam.\n"
+            "*Lista de códigos de idioma:*\naf,am,ar,az,be,bg,bn,bs,ca,ceb,co,cs,cy,da,de,el,en,eo,es,et,eu,fa,fi,fr,fy,ga,gd,gl,gu,ha,haw,hi,hmn,hr,ht,hu,hy,id,ig,is,it,iw,ja,jw,ka,kk,km,kn,ko,ku,ky,la,lb,lo,lt,lv,mg,mi,mk,ml,mn,mr,ms,mt,my,ne,nl,no,ny,pa,pl,ps,pt,ro,ru,sd,si,sk,sl,sm,sn,so,sq,sr,st,su,sv,sw,ta,te,tg,th,tl,tr,uk,ur,uz,vi,xh,yi,yo,zh,zh_CN,zh_TW,zu",
             parse_mode="markdown",
             disable_web_page_preview=True)
     except ValueError:
         update.effective_message.reply_text(
-            "The intended language is not found!")
+            "No se encuentra el idioma deseado!")
     else:
         return
 
 
 __help__ = """
-• `/tr` or `/tl` (language code) as reply to a long message.
-*Example:* `/tr en`*:* translates something to english. 
-         `/tr hi-en`*:* translates hindi to english.
+• `/tr` o `/tl` (código de idioma) como respuesta a un mensaje largo.
+* Ejemplo: * `/ tr es` *:* Traduce algo al español.
+          `/ tr en-es` *:* Traduce del inglés al español.
 """
 
 TRANSLATE_HANDLER = DisableAbleCommandHandler(["tr", "tl"], totranslate)
 
 dispatcher.add_handler(TRANSLATE_HANDLER)
 
-__mod_name__ = "Translator"
+__mod_name__ = "Traductor"
 __command_list__ = ["tr", "tl"]
 __handlers__ = [TRANSLATE_HANDLER]
