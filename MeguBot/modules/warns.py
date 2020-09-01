@@ -27,7 +27,7 @@ from telegram.ext import (CallbackContext, CallbackQueryHandler, CommandHandler,
 from telegram.utils.helpers import mention_html
 
 WARN_HANDLER_GROUP = 9
-CURRENT_WARNING_FILTER_STRING = "<b>Current warning filters in this chat:</b>\n"
+CURRENT_WARNING_FILTER_STRING = "<b>Filtros de advertencia actuales en este chat:</b>\n"
 
 
 # Not async
@@ -42,19 +42,19 @@ def warn(user: User,
 
     if user.id in TIGER_USERS:
         if warner:
-            message.reply_text("Tigers cant be warned.")
+            message.reply_text("Los tigres no pueden ser advertidos.")
         else:
             message.reply_text(
-                "Tiger triggered an auto warn filter!\n I can't warn tigers but they should avoid abusing this."
+                "El tigre activó un filtro de advertencia automática!\nNo puedo advertir a los tigres, pero deben evitar abusar de esto.."
             )
         return
 
     if user.id in WHITELIST_USERS:
         if warner:
-            message.reply_text("Wolf disasters are warn immune.")
+            message.reply_text("Los lobos son inmunes a las advertencias.")
         else:
             message.reply_text(
-                "Wolf Disaster triggered an auto warn filter!\nI can't warn wolves but they should avoid abusing this."
+                "El lobo activó un filtro de advertencia automática!\nNo puedo advertir a los lobos, pero deben evitar abusar de esto.."
             )
         return
 
@@ -69,11 +69,11 @@ def warn(user: User,
         sql.reset_warns(user.id, chat.id)
         if soft_warn:  # punch
             chat.unban_member(user.id)
-            reply = f"{limit} warnings, *Punches {mention_html(user.id, user.first_name)} with a normal punch!* "
+            reply = f"{limit} advertencia's, *Hace volar a {mention_html(user.id, user.first_name)} con una explosion de bajo nivel!* "
 
         else:  # ban
             chat.kick_member(user.id)
-            reply = f"{limit} warnings, *Punches {mention_html(user.id, user.first_name)} with a Serious Punch* "
+            reply = f"{limit} advertencia's, *Hace volar a {mention_html(user.id, user.first_name)} con una explosion de nivel serio* "
 
         for warn_reason in reasons:
             reply += f"\n - {html.escape(warn_reason)}"
@@ -85,24 +85,24 @@ def warn(user: User,
                       f"<b>Administrador:</b> {warner_tag}\n"
                       f"<b>Usuario:</b> {mention_html(user.id, user.first_name)}\n"
                       f"<b>Razón:</b> {reason}\n"
-                      f"<b>Counts:</b> <code>{num_warns}/{limit}</code>")
+                      f"<b>Cuenta:</b> <code>{num_warns}/{limit}</code>")
 
     else:
         keyboard = InlineKeyboardMarkup([{
             InlineKeyboardButton(
-                "Remove warn", callback_data="rm_warn({})".format(user.id))
+                "Quitar Advertencia", callback_data="rm_warn({})".format(user.id))
         }])
 
-        reply = f"{mention_html(user.id, user.first_name)} has {num_warns}/{limit} warnings... watch out!"
+        reply = f"{mention_html(user.id, user.first_name)} tiene {num_warns}/{limit} advertencias... cuidado!"
         if reason:
-            reply += f"\nReason for last warn:\n{html.escape(reason)}"
+            reply += f"\nRazón de la última advertencia:\n{html.escape(reason)}"
 
         log_reason = (f"<b>{html.escape(chat.title)}:</b>\n"
                       f"#WARN\n"
                       f"<b>Administrador:</b> {warner_tag}\n"
                       f"<b>Usuario:</b> {mention_html(user.id, user.first_name)}\n"
                       f"<b>Razón:</b> {reason}\n"
-                      f"<b>Counts:</b> <code>{num_warns}/{limit}</code>")
+                      f"<b>Cuenta:</b> <code>{num_warns}/{limit}</code>")
 
     try:
         message.reply_text(
@@ -146,7 +146,7 @@ def button(update: Update, context: CallbackContext) -> str:
             )
         else:
             update.effective_message.edit_text(
-                "User already has no warns.", parse_mode=ParseMode.HTML)
+                "El usuario ya no tiene advertencias.", parse_mode=ParseMode.HTML)
 
     return ""
 
@@ -171,7 +171,7 @@ def warn_user(update: Update, context: CallbackContext) -> str:
             return warn(
                 chat.get_member(user_id).user, chat, reason, message, warner)
     else:
-        message.reply_text("That looks like an invalid User ID to me.")
+        message.reply_text("Eso me parece un ID de usuario no válida.")
     return ""
 
 
@@ -189,14 +189,14 @@ def reset_warns(update: Update, context: CallbackContext) -> str:
 
     if user_id:
         sql.reset_warns(user_id, chat.id)
-        message.reply_text("Warns have been reset!")
+        message.reply_text("Las advertencias se han restablecido!")
         warned = chat.get_member(user_id).user
         return (f"<b>{html.escape(chat.title)}:</b>\n"
                 f"#RESETWARNS\n"
                 f"<b>Administrador:</b> {mention_html(user.id, user.first_name)}\n"
                 f"<b>Usuario:</b> {mention_html(warned.id, warned.first_name)}")
     else:
-        message.reply_text("No user has been designated!")
+        message.reply_text("Ningún usuario ha sido designado!")
     return ""
 
 
@@ -213,7 +213,7 @@ def warns(update: Update, context: CallbackContext):
         limit, soft_warn = sql.get_warn_setting(chat.id)
 
         if reasons:
-            text = f"This user has {num_warns}/{limit} warns, for the following reasons:"
+            text = f"Este usuario tiene {num_warns}/{limit} advertencias, por las siguientes razones:"
             for reason in reasons:
                 text += f"\n - {reason}"
 
@@ -222,10 +222,10 @@ def warns(update: Update, context: CallbackContext):
                 update.effective_message.reply_text(msg)
         else:
             update.effective_message.reply_text(
-                f"User has {num_warns}/{limit} warns, but no reasons for any of them."
+                f"El usuario tiene {num_warns}/{limit} advertencias, pero no hay motivos para ninguna de ellas."
             )
     else:
-        update.effective_message.reply_text("This user doesn't have any warns!")
+        update.effective_message.reply_text("Este usuario no tiene advertencias!")
 
 
 # Dispatcher handler stop - do not async
@@ -258,7 +258,7 @@ def add_warn_filter(update: Update, context: CallbackContext):
 
     sql.add_warn_filter(chat.id, keyword, content)
 
-    update.effective_message.reply_text(f"Warn handler added for '{keyword}'!")
+    update.effective_message.reply_text(f"Controlador de advertencias agregado para '{keyword}'!")
     raise DispatcherHandlerStop
 
 
@@ -284,17 +284,17 @@ def remove_warn_filter(update: Update, context: CallbackContext):
     chat_filters = sql.get_chat_warn_triggers(chat.id)
 
     if not chat_filters:
-        msg.reply_text("No warning filters are active here!")
+        msg.reply_text("No hay filtros de advertencia activos aquí!")
         return
 
     for filt in chat_filters:
         if filt == to_remove:
             sql.remove_warn_filter(chat.id, to_remove)
-            msg.reply_text("Okay, I'll stop warning people for that.")
+            msg.reply_text("Está bien, dejaré de advertir a la gente por eso.")
             raise DispatcherHandlerStop
 
     msg.reply_text(
-        "That's not a current warning filter - run /warnlist for all active warning filters."
+        "Ese no es un filtro de advertencia actual: Escribe /warnlist para ver todos los filtros de advertencia activos."
     )
 
 
@@ -305,7 +305,7 @@ def list_warn_filters(update: Update, context: CallbackContext):
 
     if not all_handlers:
         update.effective_message.reply_text(
-            "No warning filters are active here!")
+            "No hay filtros de advertencia activos aquí!")
         return
 
     filter_list = CURRENT_WARNING_FILTER_STRING
@@ -355,21 +355,21 @@ def set_warn_limit(update: Update, context: CallbackContext) -> str:
     if args:
         if args[0].isdigit():
             if int(args[0]) < 3:
-                msg.reply_text("The minimum warn limit is 3!")
+                msg.reply_text("El límite mínimo de advertencias es 3!")
             else:
                 sql.set_warn_limit(chat.id, int(args[0]))
-                msg.reply_text("Updated the warn limit to {}".format(args[0]))
+                msg.reply_text("Se actualizó el límite de advertencias a {}".format(args[0]))
                 return (
                     f"<b>{html.escape(chat.title)}:</b>\n"
                     f"#SET_WARN_LIMIT\n"
                     f"<b>Administrador:</b> {mention_html(user.id, user.first_name)}\n"
                     f"Set the warn limit to <code>{args[0]}</code>")
         else:
-            msg.reply_text("Give me a number as an arg!")
+            msg.reply_text("Dame un número como argumento!")
     else:
         limit, soft_warn = sql.get_warn_setting(chat.id)
 
-        msg.reply_text("The current warn limit is {}".format(limit))
+        msg.reply_text("El límite de advertencias actual es  {}".format(limit))
     return ""
 
 
@@ -384,7 +384,7 @@ def set_warn_strength(update: Update, context: CallbackContext):
     if args:
         if args[0].lower() in ("on", "yes"):
             sql.set_warn_strength(chat.id, False)
-            msg.reply_text("Too many warns will now result in a Ban!")
+            msg.reply_text("Demasiadas advertencias ahora resultarán en un BAN!")
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
                 f"<b>Administrador:</b> {mention_html(user.id, user.first_name)}\n"
@@ -394,33 +394,33 @@ def set_warn_strength(update: Update, context: CallbackContext):
         elif args[0].lower() in ("off", "no"):
             sql.set_warn_strength(chat.id, True)
             msg.reply_text(
-                "Too many warns will now result in a normal punch! Users will be able to join again after."
+                "¡Demasiadas advertencias ahora resultarán en una explosion de bajo nivel! Los usuarios podrán unirse nuevamente después."
             )
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
                 f"<b>Administrador:</b> {mention_html(user.id, user.first_name)}\n"
-                f"Has disabled strong punches. I will use normal punch on users."
+                f"Ha desactivado las explosiones fuertes. Usaré una explosion de bajo nivel en los usuarios.."
             )
 
         else:
-            msg.reply_text("I only understand on/yes/no/off!")
+            msg.reply_text("Solo entiendo on/yes/no/off!")
     else:
         limit, soft_warn = sql.get_warn_setting(chat.id)
         if soft_warn:
             msg.reply_text(
-                "Warns are currently set to *punch* users when they exceed the limits.",
+                "Las advertencias están configuradas actualmente para hacer *volar* a los usuarios cuando exceden los límites.",
                 parse_mode=ParseMode.MARKDOWN)
         else:
             msg.reply_text(
-                "Warns are currently set to *Ban* users when they exceed the limits.",
+                "Las advertencias están configuradas actualmente para *explotar*(ban) a los usuarios cuando superan los límites.",
                 parse_mode=ParseMode.MARKDOWN)
     return ""
 
 
 def __stats__():
     return (
-        f"{sql.num_warns()} overall warns, across {sql.num_warn_chats()} chats.\n"
-        f"{sql.num_warn_filters()} warn filters, across {sql.num_warn_filter_chats()} chats."
+        f"{sql.num_warns()} advertencias generales en los chats de {sql.num_warn_chats()}.\n"
+        f"{sql.num_warn_filters()} filtros de advertencia, en los chats de {sql.num_warn_filter_chats()}."
     )
 
 
@@ -438,26 +438,25 @@ def __chat_settings__(chat_id, user_id):
     num_warn_filters = sql.num_warn_chat_filters(chat_id)
     limit, soft_warn = sql.get_warn_setting(chat_id)
     return (
-        f"This chat has `{num_warn_filters}` warn filters. "
-        f"It takes `{limit}` warns before the user gets *{'kicked' if soft_warn else 'banned'}*."
+        f"Este chat tiene `{num_warn_filters}` filtros de advertencia. "
+        f"Se necesitan `{limit}` advertencias antes de que el usuario reciba *{'kicked' if soft_warn else 'banned'}*."
     )
 
 
 __help__ = """
- • `/warns <userhandle>`*:* get a user's number, and reason, of warns.
- • `/warnlist`*:* list of all current warning filters
+• `/warns <userhandle>`*:* Obtiene el número de usuario y el motivo de las advertencias.
+  • `/warnlist`*:* Lista de todos los filtros de advertencia actuales
 
-*Admins only:*
- • `/warn <userhandle>`*:* warn a user. After 3 warns, the user will be banned from the group. Can also be used as a reply.
- • `/resetwarn <userhandle>`*:* reset the warns for a user. Can also be used as a reply.
- • `/addwarn <keyword> <reply message>`*:* set a warning filter on a certain keyword. If you want your keyword to \
-be a sentence, encompass it with quotes, as such: `/addwarn "very angry" This is an angry user`. 
- • `/nowarn <keyword>`*:* stop a warning filter
- • `/warnlimit <num>`*:* set the warning limit
- • `/strongwarn <on/yes/off/no>`*:* If set to on, exceeding the warn limit will result in a ban. Else, will just punch.
+*Solo administradores:*
+  • `/warn <ID o alias de usuario>`*:* Advertir a un usuario. Después de 3 advertencias, el usuario será expulsado del grupo. También se puede utilizar como respuesta.
+  • `/resetwarn <ID o alias de usuraio>`*:* Restablece las advertencias para un usuario. También se puede utilizar como respuesta.
+  • `/addwarn <palabra clave> <mensaje de respuesta>`*:* Establece un filtro de advertencia en una determinada palabra clave. Si desea que su palabra clave\ser una oración, incluirla entre comillas, como tal: `/addwarn" Muy enojado "Este es un usuario enojado`.
+  • `/nowarn <palabra clave>`*:* Detener un filtro de advertencia.
+  • `/warnlimit <número>` *:* Establece el límite de advertencias.
+  • `/strongwarn <on/yes/off/no>`*:* Si se activa, exceder el límite de advertencia resultará en un ban. De lo contrario, solo kickeará.
 """
 
-__mod_name__ = "Warnings"
+__mod_name__ = "Advertencias"
 
 WARN_HANDLER = CommandHandler("warn", warn_user, filters=Filters.group)
 RESET_WARN_HANDLER = CommandHandler(["resetwarn", "resetwarns"],
