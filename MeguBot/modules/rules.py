@@ -114,7 +114,7 @@ __help__ = """
   •`/clearrules`*:* Borra las reglas para este chat.
 """
 
-__mod_name__ = "Rules"
+__mod_name__ = "Reglas"
 
 GET_RULES_HANDLER = CommandHandler("rules", get_rules, filters=Filters.group)
 SET_RULES_HANDLER = CommandHandler("setrules", set_rules, filters=Filters.group)
